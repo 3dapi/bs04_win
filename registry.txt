@@ -1,0 +1,184 @@
+
+
+
+
+
+
+
+
+// XP Font Registry
+// HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts
+//
+//	HKEY  hKey;
+//	hr = RegOpenKeyEx( HKEY_LOCAL_MACHINE, _T("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts"), 0, KEY_READ, &hKey );
+//	if( ERROR_SUCCESS != hr )
+//		return E_FAIL;
+//
+//
+//
+//	CHAR     achClass[MAX_PATH] = "";  // buffer for class name 
+//	DWORD    cchClassName = MAX_PATH;  // length of class string 
+//	DWORD    cSubKeys;                 // number of subkeys 
+//	DWORD    cbMaxSubKey;              // longest subkey size 
+//	DWORD    cchMaxClass;              // longest class string 
+//	DWORD    cValues;              // number of values for key 
+//	DWORD    cchMaxValue;          // longest value name 
+//	DWORD    cbMaxValueData;       // longest value data 
+//	DWORD    cbSecurityDescriptor; // size of security descriptor 
+//	FILETIME ftLastWriteTime;      // last write time 
+//
+//	// Get the class name and the value count. 
+//	hr = RegQueryInfoKey(hKey,        // key handle 
+//	achClass,                // buffer for class name 
+//	&cchClassName,           // length of class string 
+//	NULL,                    // reserved 
+//	&cSubKeys,               // number of subkeys 
+//	&cbMaxSubKey,            // longest subkey size 
+//	&cchMaxClass,            // longest class string 
+//	&cValues,                // number of values for this key 
+//	&cchMaxValue,            // longest value name 
+//	&cbMaxValueData,         // longest value data 
+//	&cbSecurityDescriptor,   // security descriptor 
+//	&ftLastWriteTime);       // last write time 
+//
+//
+//	DWORD i; 
+//	DWORD ret=0;
+//
+//	if (cValues) 
+//	{
+//		ret = ERROR_SUCCESS;
+//
+//		for (i = 0; i < cValues; ++i) 
+//		{ 
+//			char	achValue[MAX_PATH]={0};
+//			DWORD	cchValue = MAX_PATH; 
+//			DWORD	dwType;
+//
+//			char	strDest[MAX_PATH]={0};
+//			DWORD	dwSize= sizeof(strDest);
+//
+//			memset(achValue, 0, sizeof achValue);
+//
+//			ret = RegEnumValue(hKey, i, achValue, &cchValue, NULL, &dwType, (BYTE*)strDest , &dwSize);
+//
+//			if(ERROR_SUCCESS == ret)
+//			{
+//				ret = RegQueryValueEx( hKey, achValue, NULL, &dwType, (BYTE*)strDest, &dwSize );
+//
+//				if(ERROR_SUCCESS == ret)
+//				{
+//					printf("%s\n", strDest);
+//				}
+//			}
+//		} 
+//	} 
+//
+//	hr = RegCloseKey( hKey );
+//
+//
+// 서울 서체
+//http://design.seoul.go.kr/policy/data_view.php?id=63
+//
+//
+//	// Font가 설치되어 있는 폴더 얻기
+//	typedef HMODULE  (__stdcall *SHGETFOLDERPATH)(HWND, int, HANDLE, DWORD, LPTSTR);
+//	char szPath[MAX_PATH];
+//	HMODULE hModule = LoadLibrary("SHFOLDER.DLL");
+//	if (hModule != NULL)
+//	{
+//		SHGETFOLDERPATH fnShGetFolderPath = (SHGETFOLDERPATH)GetProcAddress(hModule, "SHGetFolderPathA");
+//		
+//		if (fnShGetFolderPath != NULL)
+//		{
+//			fnShGetFolderPath( NULL,
+//				CSIDL_FONTS,
+//				NULL,
+//				0,
+//				szPath);
+//		}
+//
+//		char	sDst[MAX_PATH*2] ={0};
+//
+//		sprintf(sDst, "%s/08SeoulNamsanB.ttf", szPath);
+//		hr = CopyFile("font/08SeoulNamsanB.ttf", sDst, FALSE);
+//
+//		// error
+//		if(0 == hr)
+//		{
+//			LPVOID lpMsgBuf;
+//			FormatMessage( 
+//			FORMAT_MESSAGE_ALLOCATE_BUFFER | 
+//			FORMAT_MESSAGE_FROM_SYSTEM | 
+//			FORMAT_MESSAGE_IGNORE_INSERTS,
+//			NULL,
+//			GetLastError(),
+//			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), // Default language
+//			(LPTSTR) &lpMsgBuf,
+//			0,
+//			NULL 
+//			);
+//			// Process any inserts in lpMsgBuf.
+//			// ...
+//			// Display the string.
+//			MessageBox( NULL, (LPCTSTR)lpMsgBuf, "Error", MB_OK | MB_ICONINFORMATION );
+//			// Free the buffer.
+//			LocalFree( lpMsgBuf );
+//
+//		}
+//		FreeLibrary(hModule);
+//	}
+//
+//
+//
+////	<Example> 
+//
+//
+////	#define HWND_BROADCAST 0xFFFF 
+//	#define WM_FONTCHANGE 0x001D 
+//
+////	prototype INT GDI32.AddFontResource(BYREF STRING); 
+////
+////	program 
+////
+////	//Do Font Installation 
+////	GetSystemInfo (OS, nvResult, svResult); 
+////	if(nvResult == IS_WINDOWSNT) then 
+////	szKey = "SOFTWARE\\MICROSOFT\\WINDOWS NT\\CurrentVersion\\Fonts"; 
+////	elseif(nvResult == IS_WINDOWS9X) then 
+////	szKey = "SOFTWAREMICROSOFTWINDOWSCurrentVersionFonts"; 
+////	else return; 
+////	endif; 
+////
+////	TARGETDIR = WINDIR^"Fonts"; 
+////	CopyFile ("Test.ttf", "Test.ttf"); 
+////
+////	RegDBSetDefaultRoot ( HKEY_LOCAL_MACHINE ); 
+////	RegDBSetKeyValueEx ( szKey , "Test (TrueType)" , REGDB_STRING , "Test.ttf", -1 ); 
+////
+////	svFontFile = WINDIR^"FontsTest.ttf"; 
+////	nResult = AddFontResource(svFontFile); 
+////
+//
+//	AddFontResource(
+//
+//	// font: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts
+//
+//	HKEY  hKey;
+//	hr = RegOpenKeyEx( HKEY_LOCAL_MACHINE, _T("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts"), 0, KEY_READ, &hKey );
+//	if( ERROR_SUCCESS != hr )
+//		return E_FAIL;
+//
+//
+//
+//	DWORD ret=0;
+//
+//	char	strValue[]="E:/_Document/3dapi.com/bs23_3d_aux/_com/da_01_font1_dx2d/font/08SeoulNamsanB.ttf";
+//
+//	HKEY hKey2=NULL;
+//
+//	RegCreateKey(hKey, "08서울남산체 B  (True Type)", &hKey2);
+//	hr = RegSetValue( hKey, "08서울남산체 B  (True Type)", REG_SZ, strValue, (_tcslen(strValue)+1)*sizeof(TCHAR) );
+//
+//	SendMessage(HWND_BROADCAST,WM_FONTCHANGE,0,0); 
+////	//endprogram 
