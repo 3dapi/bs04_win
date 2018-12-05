@@ -14,20 +14,12 @@ struct PNG_PIXEL
 	INT		nHeight;
 	INT		nChannel;
 
-	BYTE	BgColorR;
-	BYTE	BgColorG;
-	BYTE	BgColorB;
-
 	PNG_PIXEL()
 	{
 		pPixel	= NULL;
 		nWidth	= 0;
 		nHeight	= 0;
 		nChannel= 0;
-
-		BgColorR= 0;
-		BgColorG= 0;
-		BgColorB= 0;
 	}
 
 	PNG_PIXEL(const PNG_PIXEL& r)
@@ -38,10 +30,6 @@ struct PNG_PIXEL
 		nWidth	= r.nWidth	;
 		nHeight	= r.nHeight	;
 		nChannel= r.nChannel;
-
-		BgColorR= r.BgColorR;
-		BgColorG= r.BgColorG;
-		BgColorB= r.BgColorB;
 	}
 
 	PNG_PIXEL& operator=(const PNG_PIXEL& r)
@@ -52,11 +40,6 @@ struct PNG_PIXEL
 		nWidth	= r.nWidth	;
 		nHeight	= r.nHeight	;
 		nChannel= r.nChannel;
-
-		BgColorR= r.BgColorR;
-		BgColorG= r.BgColorG;
-		BgColorB= r.BgColorB;
-
 		return *this;
 	}
 
@@ -108,8 +91,24 @@ public:
 };
 
 
+#pragma pack(push,1)
+struct COLOR3
+{
+	unsigned char r,g,b;
+	COLOR3(unsigned char _r=0, unsigned char _g=0, unsigned char _b=0):r(_r), g(_g), b(_b){}
+};
+struct COLOR4
+{
+	unsigned char r,g,b,a;
+	COLOR4(unsigned char _r=0, unsigned char _g=0, unsigned char _b=0, unsigned char _a=0):r(_r), g(_g), b(_b), a(_a){}
+};
+#pragma pack(pop)
+
+
 INT LoadPngFile(PNG_PIXEL*	pPngOut, char* sFileName);
+INT LoadPngFile(unsigned char** img_p, int* img_w, int* img_h, int* img_d, const char* sFileName);
 INT LoadImageFile(HWND hwnd, char* sFileName, PNG_PIXEL* pPngOut);
+INT SavePngToFile(const char* sFileName, unsigned char* img_p, int img_w, int img_h, int img_d);
 
 
 #endif

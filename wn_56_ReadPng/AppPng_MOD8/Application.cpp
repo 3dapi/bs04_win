@@ -91,7 +91,81 @@ INT CApplication::Create( HINSTANCE hInst)
 	UpdateWindow( m_hWnd );
 	::ShowCursor(m_bShowCusor);
 
+/*
+	std::vector<COLOR3>	color3;
+	int img_w = 128, img_h = 128;
+	for(int j=0; j<img_h; ++j)
+	{
+		for(int i=0; i<img_w; ++i)
+		{
+			if(j<43)
+			{
+				if(i<43)
+					color3.push_back(COLOR3{255,   0,   0});
+				else if(i<86)
+					color3.push_back(COLOR3{255,   0, 255});
+				else
+					color3.push_back(COLOR3{  0,   0, 255});
+			}
+			else if(j<86)
+			{
+				if(i<43)
+					color3.push_back(COLOR3{255, 255,   0});
+				else if(i<86)
+					color3.push_back(COLOR3{255, 255, 255});
+				else
+					color3.push_back(COLOR3{  0, 128, 128});
+			}
+			else
+			{
+				if(i<43)
+					color3.push_back(COLOR3{  0, 255,   0});
+				else if(i<86)
+					color3.push_back(COLOR3{  0, 128, 255});
+				else
+					color3.push_back(COLOR3{  0, 255, 255});
+			}
+		}
+	}
+	SavePngToFile("d:/png_rgb.png", &color3[0].r, img_w, img_h, sizeof(COLOR3));
 
+
+	std::vector<COLOR4>	color4;
+	for(int j=0; j<img_h; ++j)
+	{
+		for(int i=0; i<img_w; ++i)
+		{
+			if(j<43)
+			{
+				if(i<43)
+					color4.push_back(COLOR4{255,   0,   0, 255});
+				else if(i<86)
+					color4.push_back(COLOR4{255,   0, 255, 255});
+				else
+					color4.push_back(COLOR4{  0,   0, 255, 255});
+			}
+			else if(j<86)
+			{
+				if(i<43)
+					color4.push_back(COLOR4{255, 255,   0, 255});
+				else if(i<86)
+					color4.push_back(COLOR4{255, 255, 255, 128});
+				else
+					color4.push_back(COLOR4{  0, 128, 128,  85});
+			}
+			else
+			{
+				if(i<43)
+					color4.push_back(COLOR4{  0, 255,   0, 255});
+				else if(i<86)
+					color4.push_back(COLOR4{  0, 128, 255,  85});
+				else
+					color4.push_back(COLOR4{  0, 255, 255,   0});
+			}
+		}
+	}
+	SavePngToFile("d:/png_rgba.png", &color4[0].r, img_w, img_h, sizeof(COLOR4));
+*/
 	return S_OK;
 }
 
@@ -337,6 +411,21 @@ void CApplication::Render()
 
 INT LoadPngFile(PNG_PIXEL*	pPngOut, char* sFileName)
 {
+	unsigned char* img_p=NULL;
+	int img_w=0, img_h=0, img_d=0;
+	int hr = LoadPngFile(&img_p, &img_w, &img_h, &img_d, sFileName);
+	if(pPngOut)
+	{
+		pPngOut->nWidth = img_w;
+		pPngOut->nHeight= img_h;
+		pPngOut->nChannel= img_d;
+		pPngOut->pPixel = img_p;
+	}
+	return hr;
+}
+
+INT LoadPngFile(unsigned char** img_p, int* img_w, int* img_h, int* img_d, const char* sFileName)
+{
 	FILE*			fp;
 	png_byte        pbSig[8];
 	int             iColorType;
@@ -392,13 +481,7 @@ INT LoadPngFile(PNG_PIXEL*	pPngOut, char* sFileName)
 	png_read_info(png_ptr, info_ptr);
 
 	// get width, height, bit-depth and color-type
-	png_get_IHDR(png_ptr
-		, info_ptr
-		, &png_w
-		, &png_h
-		, &png_b
-		, &iColorType
-		, NULL, NULL, NULL);
+	png_get_IHDR(png_ptr, info_ptr, &png_w, &png_h, &png_b, &iColorType, NULL, NULL, NULL);
 
 	// expand images of all color-type and bit-depth to 3x8 bit RGB images
 	// let the library process things like alpha, transparency, background
@@ -415,18 +498,12 @@ INT LoadPngFile(PNG_PIXEL*	pPngOut, char* sFileName)
 	if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS))
 		png_set_expand(png_ptr);
 
-	if (iColorType == PNG_COLOR_TYPE_GRAY ||
-		iColorType == PNG_COLOR_TYPE_GRAY_ALPHA)
+	if (iColorType == PNG_COLOR_TYPE_GRAY || iColorType == PNG_COLOR_TYPE_GRAY_ALPHA)
 		png_set_gray_to_rgb(png_ptr);
 
 	// set the background color to draw transparent and alpha images over.
 	if (png_get_bKGD(png_ptr, info_ptr, &pBackground))
-	{
 		png_set_background(png_ptr, pBackground, PNG_BACKGROUND_GAMMA_FILE, 1, 1.0);
-		pPngOut->BgColorR	= (byte) pBackground->red;
-		pPngOut->BgColorG	= (byte) pBackground->green;
-		pPngOut->BgColorB	= (byte) pBackground->blue;
-	}
 
 	// if required set gamma conversion
 	if (png_get_gAMA(png_ptr, info_ptr, &dGamma))
@@ -436,13 +513,7 @@ INT LoadPngFile(PNG_PIXEL*	pPngOut, char* sFileName)
 	png_read_update_info(png_ptr, info_ptr);
 
 	// get again width, height and the new bit-depth and color-type
-	png_get_IHDR(png_ptr
-		, info_ptr
-		, &png_w
-		, &png_h
-		, &png_b
-		, &iColorType
-		, NULL, NULL, NULL);
+	png_get_IHDR(png_ptr, info_ptr, &png_w, &png_h, &png_b, &iColorType, NULL, NULL, NULL);
 
 
 	// row_bytes is the width x number of channels
@@ -491,17 +562,17 @@ INT LoadPngFile(PNG_PIXEL*	pPngOut, char* sFileName)
 	int dst_w = ((png_w + 3L) >> 2) << 2;
 	if(dst_w == png_w)
 	{
-		pPngOut->nWidth = png_w;
-		pPngOut->nHeight= png_h;
-		pPngOut->nChannel= png_d;
-		pPngOut->pPixel = png_p;
+		if(img_w) *img_w = png_w;
+		if(img_h) *img_h = png_h;
+		if(img_d) *img_d = png_d;
+		if(img_p) *img_p = png_p;
 		return 0;
 	}
 
 	png_byte* dst_p = (png_byte*)malloc(dst_w * png_d * png_h);
 	memset(dst_p, 0xFF, dst_w * png_d * png_h);
 
-	for(int j=0; j<png_h; ++j)
+	for(int j=0; j<(int)png_h; ++j)
 	{
 		int idx_src = j * png_w * png_d;
 		int idx_dst = j * dst_w * png_d;
@@ -512,7 +583,7 @@ INT LoadPngFile(PNG_PIXEL*	pPngOut, char* sFileName)
 
 		if(4 == png_d)
 		{
-			for(int i=0; i<dst_w-png_w; ++i)
+			for(int i=0; i<int(dst_w-png_w); ++i)
 			{
 				//xx_p[i * png_d + 0] = 0;		// red
 				//xx_p[i * png_d + 1] = 0;		// green
@@ -523,16 +594,15 @@ INT LoadPngFile(PNG_PIXEL*	pPngOut, char* sFileName)
 	}
 	free(png_p);
 
-	pPngOut->nWidth = dst_w;
-	pPngOut->nHeight= png_h;
-	pPngOut->nChannel= png_d;
-	pPngOut->pPixel = dst_p;
+	if(img_w) *img_w = png_w;
+	if(img_h) *img_h = png_h;
+	if(img_d) *img_d = png_d;
+	if(img_p) *img_p = png_p;
 	return 0;
 
 LOAD_IMAGE_ERROR:
 
 	fclose(fp);
-
 	png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
 	SAFE_FREE(	ppbRowPointers	);
 
@@ -540,13 +610,74 @@ LOAD_IMAGE_ERROR:
 }
 
 
+INT SavePngToFile(const char* sFileName, unsigned char* img_p, int img_w, int img_h, int img_d)
+{
+	int hr = -1;
+	if(NULL == sFileName)
+		return hr;
 
+	FILE* fp = NULL;
+	fp = fopen(sFileName, "wb");
+	if(NULL == fp)
+		return hr;
 
+	png_structp png_ptr = NULL;
+	png_infop info_ptr = NULL;
+	png_colorp palette = NULL;
+	png_bytep *row_pointers = NULL;
+	do
+	{
+		png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+		if(!png_ptr)
+			break;
 
+		info_ptr = png_create_info_struct(png_ptr);
+		if(!info_ptr)
+			break;
 
+		if(setjmp(png_jmpbuf(png_ptr)))
+			break;
 
+		png_init_io(png_ptr, fp);
+		png_set_IHDR(png_ptr, info_ptr, (png_uint_32)img_w, (png_uint_32)img_h, 8
+					 , 4 == img_d? PNG_COLOR_TYPE_RGB_ALPHA : PNG_COLOR_TYPE_RGB
+					 , PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_BASE, PNG_FILTER_TYPE_BASE);
 
+		palette = (png_colorp)png_malloc(png_ptr, PNG_MAX_PALETTE_LENGTH * sizeof(png_color));
+		if(!palette)
+			break;
 
+		png_set_PLTE(png_ptr, info_ptr, palette, PNG_MAX_PALETTE_LENGTH);
+		png_write_info(png_ptr, info_ptr);
+		png_set_packing(png_ptr);
+
+		row_pointers = (png_bytep*)malloc(img_h * sizeof(png_bytep));
+		if(!row_pointers)
+			break;
+
+		int pitch = img_d * img_w;
+		for(int j=0; j<img_h; ++j)
+		{
+			row_pointers[j] = (png_bytep)(img_p + pitch * j);
+		}
+		png_write_image(png_ptr, row_pointers);
+		png_write_end(png_ptr, info_ptr);
+		hr = 0;
+	} while(0);
+
+	fclose(fp);
+
+	if(row_pointers)
+		free(row_pointers);
+
+	if(palette)
+		png_free(png_ptr, palette);
+
+	if(png_ptr)
+		png_destroy_write_struct(&png_ptr, info_ptr? &info_ptr : NULL);
+
+	return hr;
+}
 
 
 #if _MSC_VER >= 1200
