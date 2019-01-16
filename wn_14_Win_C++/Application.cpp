@@ -6,18 +6,14 @@
 #include "_StdAfx.h"
 
 
-CApplication* CApplication::g_pApp = NULL;
-
-
-CApplication* CApplication::GetAppInstance()
+CApplication* CApplication::GetInstance()
 {
-	return g_pApp;
+	static CApplication app;
+	return &app;
 }
 
 CApplication::CApplication()
 {
-	g_pApp	= this;
-	
 	strcpy(m_sCls, "McApi Window");
 
 	m_hInst		= NULL;
@@ -29,13 +25,10 @@ CApplication::CApplication()
 	m_bShowCusor= true;
 }
 
-
-CApplication::~CApplication()
+static LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-
+	return CApplication::GetInstance()->MsgProc(hWnd, msg, wParam, lParam);
 }
-
-
 
 INT CApplication::Create( HINSTANCE hInst)
 {
@@ -75,7 +68,7 @@ INT CApplication::Create( HINSTANCE hInst)
 		, NULL
 		, NULL
 		, m_hInst
-		, NULL );
+		, CApplication::GetInstance() );
 	
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
@@ -96,6 +89,47 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 {
 	switch( msg )
 	{
+		case WM_GETMINMAXINFO:
+		{
+			MINMAXINFO* info = (MINMAXINFO*)lParam;
+			break;
+		}
+		case WM_NCCREATE:
+		{
+			CREATESTRUCT* info = (CREATESTRUCT*)lParam;
+			break;
+		}
+		case WM_NCCALCSIZE:
+		{
+			if(wParam)
+			{
+				NCCALCSIZE_PARAMS* info = (NCCALCSIZE_PARAMS*)lParam;
+			}
+			else
+			{
+				RECT* info = (RECT*)lParam;
+			}
+			break;
+		}
+
+		case WM_CREATE:
+		{
+			CREATESTRUCT* info = (CREATESTRUCT*)lParam;
+			break;
+		}
+		case WM_SHOWWINDOW:
+		{
+			if(wParam)
+			{
+				// shown
+			}
+			else
+			{
+				// hidden
+			}
+			break;
+		}
+
 		case WM_KEYDOWN:
 		{
 			
@@ -145,10 +179,4 @@ INT CApplication::Run()
 	UnregisterClass( m_sCls, m_hInst);
 	
 	return 1;
-}
-
-
-LRESULT WINAPI CApplication::WndProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
-{
-	return CApplication::GetAppInstance()->MsgProc(hWnd, msg, wParam, lParam);
 }
