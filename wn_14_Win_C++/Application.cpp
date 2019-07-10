@@ -5,6 +5,7 @@
 
 #include "_StdAfx.h"
 
+static std::map<HWND, CApplication*>	g_win_obj;
 
 CApplication* CApplication::GetInstance()
 {
@@ -14,7 +15,7 @@ CApplication* CApplication::GetInstance()
 
 CApplication::CApplication()
 {
-	strcpy(m_sCls, "McApi Window");
+	m_sCls = std::string("McApi Window");
 
 	m_hInst		= NULL;
 	m_hWnd		= NULL;
@@ -25,9 +26,28 @@ CApplication::CApplication()
 	m_bShowCusor= true;
 }
 
-static LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+static LRESULT WINAPI WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	return CApplication::GetInstance()->MsgProc(hWnd, msg, wParam, lParam);
+	if(WM_NCCREATE == uMsg)
+	{
+		CREATESTRUCT* info = (CREATESTRUCT*)lParam;
+		if(info)
+		{
+			CApplication* obj = (CApplication*)info->lpCreateParams;
+			CApplication* c_thzz = dynamic_cast<CApplication*>(obj);
+			if(c_thzz)
+				g_win_obj.emplace(hWnd, c_thzz);
+		}
+		return DefWindowProc( hWnd, uMsg, wParam, lParam );
+	}
+	// find CApplication*
+	auto it = g_win_obj.find(hWnd);
+	if(it == g_win_obj.end())
+		return DefWindowProc( hWnd, uMsg, wParam, lParam );
+	CApplication* thzz = dynamic_cast<CApplication*>(it->second);
+	if(!thzz)
+		return DefWindowProc( hWnd, uMsg, wParam, lParam );
+	return thzz->MsgProc(hWnd, uMsg, wParam, lParam);
 }
 
 INT CApplication::Create( HINSTANCE hInst)
@@ -45,7 +65,7 @@ INT CApplication::Create( HINSTANCE hInst)
 		, LoadCursor(NULL,IDC_ARROW)
 		, (HBRUSH)GetStockObject(LTGRAY_BRUSH)
 		, NULL
-		, m_sCls
+		, m_sCls.c_str()
 	};
 	
 	RegisterClass( &wc );
@@ -58,8 +78,9 @@ INT CApplication::Create( HINSTANCE hInst)
 	int iScnSysW = ::GetSystemMetrics(SM_CXSCREEN);
 	int iScnSysH = ::GetSystemMetrics(SM_CYSCREEN);
 	
-	m_hWnd = CreateWindow( m_sCls
-		, m_sCls
+	auto thzz = CApplication::GetInstance();
+	m_hWnd = CreateWindow( m_sCls.c_str()
+		, m_sCls.c_str()
 		, m_dWinStyle
 		, (iScnSysW - (rc.right-rc.left))/2
 		, (iScnSysH - (rc.bottom-rc.top))/2
@@ -68,7 +89,7 @@ INT CApplication::Create( HINSTANCE hInst)
 		, NULL
 		, NULL
 		, m_hInst
-		, CApplication::GetInstance() );
+		, thzz );
 	
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
@@ -80,14 +101,23 @@ INT CApplication::Create( HINSTANCE hInst)
 
 void CApplication::Cleanup()
 {
+	if(!m_hWnd)
+		return;
 	if(m_hInst)
-		UnregisterClass( m_sCls, m_hInst);
+	{
+		UnregisterClass( m_sCls.c_str(), m_hInst);
+	}
+	// remove from map
+	auto it = g_win_obj.find(m_hWnd);
+	if(it != g_win_obj.end())
+		g_win_obj.erase(it);
+	m_hWnd = {};
 }
 
 
-LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
+LRESULT CApplication::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 {
-	switch( msg )
+	switch( uMsg )
 	{
 		case WM_GETMINMAXINFO:
 		{
@@ -97,6 +127,11 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		case WM_NCCREATE:
 		{
 			CREATESTRUCT* info = (CREATESTRUCT*)lParam;
+			void* thzz = {};
+			if(info)
+			{
+				thzz = info->lpCreateParams;
+			}
 			break;
 		}
 		case WM_NCCALCSIZE:
@@ -115,6 +150,11 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		case WM_CREATE:
 		{
 			CREATESTRUCT* info = (CREATESTRUCT*)lParam;
+			void* thzz = {};
+			if(info)
+			{
+				thzz = info->lpCreateParams;
+			}
 			break;
 		}
 		case WM_SHOWWINDOW:
@@ -154,15 +194,14 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		}
 	}
 	
-	return DefWindowProc( hWnd, msg, wParam, lParam );
+	return DefWindowProc( hWnd, uMsg, wParam, lParam );
 }
 
 
 
 INT CApplication::Run()
-{	    
-	MSG msg;
-	memset( &msg, 0, sizeof(msg) );
+{
+	MSG msg{};
 	
 	while( msg.message!=WM_QUIT )
 	{
@@ -176,7 +215,7 @@ INT CApplication::Run()
 		}
 	}
 	
-	UnregisterClass( m_sCls, m_hInst);
+	UnregisterClass( m_sCls.c_str(), m_hInst);
 	
 	return 1;
 }

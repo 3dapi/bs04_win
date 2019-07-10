@@ -5,12 +5,14 @@
 #ifndef _APPLICATION_H_
 #define _APPLICATION_H_
 
+#include <string>
+
 class CApplication
 {
 private:
 	CApplication();
 public:
-	TCHAR		m_sCls[128]	;
+	std::string	m_sCls		;
 	HINSTANCE	m_hInst		;
 	HWND		m_hWnd		;
 	DWORD		m_dWinStyle	;
