@@ -42,6 +42,34 @@ int crt_memsize(void* ptr)
 	return mmsize;
 }
 
+char* crt_strup(const char* src)
+{
+	char* ret = NULL;
+	size_t len = 0;
+	if(!src)
+		return NULL;
+	len = ::strlen(src);
+	if(!len)
+		return NULL;
+	ret = (char*)malloc(len + 1);
+	memcpy(ret, src, len);
+	ret[len]=0;
+	return ret;
+}
+
+std::string crt_strup(const std::string& src)
+{
+	std::string ret;
+	size_t len = src.length();
+	if(!len)
+		return ret;
+	ret.resize(len);
+	auto c_dst = &ret[0];
+	auto c_src = &src[0];
+	std::copy(c_src, c_src+ len, c_dst);
+	return ret;
+}
+
 static int main()
 {
 	std::string str_fit_test;
