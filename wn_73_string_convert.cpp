@@ -1,6 +1,9 @@
-﻿
-#include <iostream>
+﻿#include <iostream>
 #include <string>
+#include <codecvt>
+#include <locale.h>
+
+// win32 api -----------------------------------------------------------------------------------------------------------
 #include <windows.h>
 
 // unicode > multibyte
@@ -67,13 +70,41 @@ std::string str_mbyte_to_utf8(const std::string& src) {
 	return str_unicode_to_utf8(w_str);
 }
 
-int main() {
-	char str_mb [] = "안녕하세요";
+// std:: code cvt ------------------------------------------------------------------------------------------------------
+
+// convert UTF-8 string to wstring
+std::wstring cvt_utf8_to_unicode(const std::string& str)
+{
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> conv;
+	return conv.from_bytes(str);
+}
+
+// convert wstring to UTF-8 string
+std::string cvt_unicode_to_utf8(const std::wstring& str)
+{
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> conv;
+	return conv.to_bytes(str);
+}
+
+std::string cpp_string_nullptr()
+{
+	return std::string("");
+}
+
+void cpp_str2(const std::string& ref={})
+{
+	printf("%s\n", ref.c_str());
+}
+
+int main(int, char**)
+{
+	::setlocale(LC_ALL,"");
+	char str_mb [] = "안녕하세요. Hello world";
 	std::wstring str_unicode = str_mbyte_to_unicode(str_mb);
 	std::wcout << "unicode: " << str_unicode << std::endl;
 
 	std::string str_mbyte = str_unicode_to_mbyte(str_unicode);
-    std::cout << "mbyte: " << str_mbyte << std::endl;
+	std::cout << "mbyte: " << str_mbyte << std::endl;
 
 	std::string str_utf8 = str_unicode_to_utf8(str_unicode);
 	std::cout << "utf8: " << str_utf8 << std::endl;
@@ -81,4 +112,16 @@ int main() {
 	str_utf8 = str_mbyte_to_utf8(str_mb);
 	str_mbyte = str_utf8_to_mbyte(str_utf8);
 	std::cout << "mbyte: " << str_mbyte << std::endl;
+
+	str_utf8 = cvt_unicode_to_utf8(str_unicode);
+	str_unicode = cvt_utf8_to_unicode(str_utf8);
+	std::wcout << "code cvt: " << str_unicode << std::endl;
+
+	//std::string ret ="Hello world";
+	//ret = cpp_string_nullptr();
+	//printf("%s\n", ret.c_str());
+	//size_t cc = std::string::npos;
+	//int dd    = std::string::npos;
+	//int e = EOF;
+	return 0;
 }
