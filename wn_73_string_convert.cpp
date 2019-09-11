@@ -125,3 +125,29 @@ int main(int, char**)
 	//int e = EOF;
 	return 0;
 }
+
+#include <clocale>
+#include <cwchar>
+int use_locale()
+{
+	//std::setlocale(LC_ALL, "en_US.utf8");
+	//std::setlocale(LC_ALL, "korean");
+	std::setlocale(LC_ALL, "");
+	std::string str_mbs = "안녕하세요. Hello world 방가와염";
+
+	std::wstring str_wchar;
+	auto w_len = std::mbstowcs({}, str_mbs.data(), str_mbs.length());
+	str_wchar.resize(w_len);
+	w_len = std::mbstowcs(str_wchar.data(), str_mbs.data(), str_mbs.length());
+
+	// std::wcstombs
+	// ...
+	//
+
+	const wchar_t* wstr = str_wchar.data();
+	std::size_t str_len = std::wcsrtombs(nullptr, &wstr, 0, {});
+	std::string mbstr(str_len, 0);
+	str_len = std::wcsrtombs(mbstr.data(), &wstr, mbstr.length(), {});
+	return 0;
+}
+
