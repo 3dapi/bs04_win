@@ -128,7 +128,7 @@ int main(int, char**)
 
 #include <clocale>
 #include <cwchar>
-int use_locale()
+int use_mbs_f()
 {
 	//std::setlocale(LC_ALL, "en_US.utf8");
 	//std::setlocale(LC_ALL, "korean");
