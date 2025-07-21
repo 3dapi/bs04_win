@@ -4,6 +4,7 @@
 
 #include "GdiFont.h"
 #include <map>
+#include <string>
 #include <Dwrite.h>
 
 
