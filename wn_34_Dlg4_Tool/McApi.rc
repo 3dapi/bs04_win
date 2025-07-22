@@ -8,7 +8,7 @@
 // Generated from the TEXTINCLUDE 2 resource.
 //
 #define IDC_STATIC -1
-#include <windows.h>
+#include <Windows.h>
 
 
 
@@ -110,7 +110,7 @@ END
 2 TEXTINCLUDE DISCARDABLE 
 BEGIN
     "#define IDC_STATIC -1\r\n"
-    "#include <windows.h>\r\n"
+    "#include <Windows.h>\r\n"
     "\r\n"
     "\r\n"
     "\0"
