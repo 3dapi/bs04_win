@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+Ôªø// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +28,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 
@@ -79,7 +79,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 
 	return S_OK;
@@ -185,10 +185,10 @@ void CApplication::Render()
 
 	hMemDC=CreateCompatibleDC(hdc);
 
-	// DDB ª˝º∫
+	// DDB ÏÉùÏÑ±
 	// hBitmap=CreateBitmap(8,8,1,1,Bits);
 
-	// ±∏¡∂√º∑Œ DDB ª˝º∫
+	// Íµ¨Ï°∞Ï≤¥Î°ú DDB ÏÉùÏÑ±
 	bit.bmType=0;
 	bit.bmWidth=8;
 	bit.bmHeight=8;

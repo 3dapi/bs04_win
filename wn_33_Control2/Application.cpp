@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +28,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 
@@ -79,7 +79,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 
 #define ID_EDIT		(WM_USER+1)
@@ -163,7 +163,7 @@ INT CApplication::Run()
 
 LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
 {
-	static char str[128]="¿ŞÂÊ Å¬¸¯:¿¡µğÆ® ÀÌµ¿, ¿À¸¥ÂÊ Å¬¸¯:º¸ÀÓ/¼û±è";
+	static char str[128]="ì™¼ìª½ í´ë¦­:ì—ë””íŠ¸ ì´ë™, ì˜¤ë¥¸ìª½ í´ë¦­:ë³´ì„/ìˆ¨ê¹€";
 	static int nTop=10;
 	static BOOL bShow=TRUE;
 	switch( msg )

@@ -1,4 +1,4 @@
-
+ï»¿
 
 #include <stdio.h>
 #include <windows.h>
@@ -8,17 +8,17 @@ void main()
 {
 	char sMsg[] = "Hello world\n";
 
-	// 1. Ç¥ÁØÃâ·Â
+	// 1. í‘œì¤€ì¶œë ¥
 	printf(sMsg);
 
-	// 2. ¹®ÀÚ¿­¿¡ Ãâ·Â
+	// 2. ë¬¸ìì—´ì— ì¶œë ¥
 	char sBuf[1024];
 	int	 nIdx=10;
 
 	sprintf(sBuf,"key1: %d	Key2: %s", nIdx, sMsg);
-//	MessageBox(0, sBuf, "¹®ÀÚ¿­¿¡ Ãâ·Â", 0);
+//	MessageBox(0, sBuf, "ë¬¸ìì—´ì— ì¶œë ¥", 0);
 
-	//3. ÆÄÀÏ¿¡ Ãâ·Â
+	//3. íŒŒì¼ì— ì¶œë ¥
 	FILE* pFpOut;
 
 	pFpOut = fopen("FileOut/Output.txt", "wt");
@@ -39,18 +39,18 @@ void main()
 
 
 
-	// 4. Ç¥ÁØ ÀÔ·Â
+	// 4. í‘œì¤€ ì…ë ¥
 	char sStr[128];
 //	scanf("%s", sStr);
 //	fprintf(pFpOut, "%s\n", sStr);
 
-	// 5. ¹®ÀÚ¿­¿¡¼­ ÀÔ·Â
+	// 5. ë¬¸ìì—´ì—ì„œ ì…ë ¥
 	int nIdx2;
 	sscanf(sBuf,"%*s %d %*s %s", &nIdx2, sStr);
 
 
 
-	//6. ÆÄÀÏ¿¡¼­ ÀÔ·Â
+	//6. íŒŒì¼ì—ì„œ ì…ë ¥
 	FILE* pFpIn;
 
 	pFpIn = fopen("FileOut/Output.txt", "rt");

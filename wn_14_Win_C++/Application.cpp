@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+﻿// Implementation of the CApplication class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ CApplication::CApplication()
 	m_dScnX		= 800;
 	m_dScnY		= 600;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 static LRESULT WINAPI WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -93,7 +93,7 @@ INT CApplication::Create( HINSTANCE hInst)
 	
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 	
 	return S_OK;
 }

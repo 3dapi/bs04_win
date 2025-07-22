@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+Ôªø// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -82,11 +82,11 @@ INT CApplication::Create( HINSTANCE hInst)
 
 
 
-	// Tool Tip∏∏µÈ±‚
+	// Tool TipÎßåÎì§Í∏∞
 	InitCommonControls();
 	TOOLINFO ti;
 
-	m_hBtn=CreateWindow("button","πˆ∆∞",WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+	m_hBtn=CreateWindow("button","Î≤ÑÌäº",WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
 				50,50,150,100,m_hWnd,(HMENU)0,m_hInst,NULL);
 
 
@@ -98,7 +98,7 @@ INT CApplication::Create( HINSTANCE hInst)
 	ti.uFlags=TTF_SUBCLASS | TTF_IDISHWND;
 	ti.hwnd=m_hWnd;
 	ti.uId=(WPARAM)m_hBtn;
-	ti.lpszText="ø¨Ω¿ πˆ∆∞ ¿‘¥œ¥Ÿ";
+	ti.lpszText="Ïó∞Ïäµ Î≤ÑÌäº ÏûÖÎãàÎã§";
 
 	SendMessage(m_hTip,TTM_ADDTOOL,0,(LPARAM)(LPTOOLINFO)&ti);
 
@@ -111,7 +111,7 @@ INT CApplication::Create( HINSTANCE hInst)
 	ti.uFlags=TTF_SUBCLASS;
 	ti.hwnd=m_hWnd;
 	ti.uId=0;
-	ti.lpszText="ªÁ∞¢ øµø™ ¿‘¥œ¥Ÿ";
+	ti.lpszText="ÏÇ¨Í∞Å ÏòÅÏó≠ ÏûÖÎãàÎã§";
 	ti.rect=m_rcTst;
 
 	SendMessage(m_hTip,TTM_ADDTOOL,0,(LPARAM)(LPTOOLINFO)&ti);

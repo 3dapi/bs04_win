@@ -1,4 +1,4 @@
-// D3D Sprite Tutorial
+Ôªø// D3D Sprite Tutorial
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -12,9 +12,9 @@
 #include "GdiPlusFont.h"
 
 char    m_fontFile[] ="_font/NanumBarunGothic.otf";
-char    m_msg_gdi_text[] = "∞°≥™¥Ÿ∂Û∏∂πŸªÁ ABCDEFGHIJ abcdefghij1234567890: gdi draw text";
-char    m_msg_gdi_plus_text[] = "∞°≥™¥Ÿ∂Û∏∂πŸªÁ ABCDEFGHIJ abcdefghij1234567890: gdi plus: text";
-char    m_msg_gdi_plus_path[] = "∞°≥™¥Ÿ∂Û∏∂πŸªÁ ABCDEFGHIJ abcdefghij1234567890: gdi plus: path";
+char    m_msg_gdi_text[] = "Í∞ÄÎÇòÎã§ÎùºÎßàÎ∞îÏÇ¨ ABCDEFGHIJ abcdefghij1234567890: gdi draw text";
+char    m_msg_gdi_plus_text[] = "Í∞ÄÎÇòÎã§ÎùºÎßàÎ∞îÏÇ¨ ABCDEFGHIJ abcdefghij1234567890: gdi plus: text";
+char    m_msg_gdi_plus_path[] = "Í∞ÄÎÇòÎã§ÎùºÎßàÎ∞îÏÇ¨ ABCDEFGHIJ abcdefghij1234567890: gdi plus: path";
 
 GdiFont*  font_gdi1;
 GdiFont*  font_gdi2;
@@ -56,7 +56,7 @@ void OnPaint(HDC hdc)
 HWND		m_hWnd		= NULL;
 DWORD		m_dScnX		= 800;			// Screen Width
 DWORD		m_dScnY		= 600;			// Screen Height
-BOOL		m_bShowCusor= TRUE;			// Show Cusor
+BOOL		m_bShowCursor= TRUE;			// Show Cursor
 
 INT		Run();
 void	Cleanup();
@@ -122,7 +122,7 @@ INT Create()
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 	return 0;
 }
 

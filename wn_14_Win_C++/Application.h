@@ -1,4 +1,4 @@
-// Interface for the CApplication class.
+ï»¿// Interface for the CApplication class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ public:
 	DWORD		m_dScnX		;			// Screen Width
 	DWORD		m_dScnY		;			// Screen Height
 
-	bool		m_bShowCusor;			// Show Cusor
+	bool		m_bShowCursor;			// Show Cursor
 public:
 	//Window
 	INT		Create(HINSTANCE hInst);
@@ -28,7 +28,7 @@ public:
 	
 public:
 	static CApplication* GetInstance();						// singleton instance
-	virtual LRESULT MsgProc(HWND, UINT, WPARAM, LPARAM);	// ¸Þ½ÃÁö Ã³¸®ÇÔ¼ö
+	virtual LRESULT MsgProc(HWND, UINT, WPARAM, LPARAM);	// ë©”ì‹œì§€ ì²˜ë¦¬í•¨ìˆ˜
 };
 
 #endif

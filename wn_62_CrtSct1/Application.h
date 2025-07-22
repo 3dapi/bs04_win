@@ -1,4 +1,4 @@
-// Interface for the CApplication class.
+﻿// Interface for the CApplication class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -17,7 +17,7 @@ public:
 	DWORD		m_dScnX		;			// Screen Width
 	DWORD		m_dScnY		;			// Screen Height
 
-	bool		m_bShowCusor;			// Show Cusor
+	bool		m_bShowCursor;			// Show Cursor
 
 public:
 	CApplication();

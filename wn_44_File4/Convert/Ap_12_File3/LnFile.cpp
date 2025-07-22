@@ -1,4 +1,4 @@
-//
+ï»¿//
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -10,7 +10,7 @@
 
 LNFILE LnFile_fopen(char* sFile, char* sT)
 {
-	// rt, rb, wt, wb¸¸ Áö¿øÇÏÀÚ.
+	// rt, rb, wt, wbë§Œ ì§€ì›í•˜ì.
 
 	LNFILE hFile = NULL;
 
@@ -202,7 +202,7 @@ INT LnFile_fgets(LNFILE hFile, char* sLine, int iMax, BOOL bFillEndLineZero)
 
 		// End of Line
 //		if('\n' == sLine[i] || '\r' == sLine[i] || '\n\r' == sLine[i] || '\r\n' == sLine[i])
-		// windowÀÇ ÅØ½ºÆ® ÆÄÀÏÀº '\r\n'°ªÀÌ µé¾î¿À´õ¶ó...
+		// windowì˜ í…ìŠ¤íŠ¸ íŒŒì¼ì€ '\r\n'ê°’ì´ ë“¤ì–´ì˜¤ë”ë¼...
 		if('\n' == sLine[i])
 		{
 			hr = 1;

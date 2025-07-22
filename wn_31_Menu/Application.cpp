@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -28,7 +28,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 
@@ -79,7 +79,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 	return S_OK;
 }
@@ -127,10 +127,10 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			switch(LOWORD(wParam))
 			{
 				case ID_FILE_MENU1:
-					MessageBox(hWnd,"Ã¹¹øÂ° ¸Ş´º¸¦ ¼±ÅÃÇß½À´Ï´Ù.","Menu Demo",0);
+					MessageBox(hWnd,"ì²«ë²ˆì§¸ ë©”ë‰´ë¥¼ ì„ íƒí–ˆìŠµë‹ˆë‹¤.","Menu Demo",0);
 					break;
 				case ID_FILE_MENU2:
-					MessageBox(hWnd,"µÎ¹øÂ° ¸Ş´º¸¦ ¼±ÅÃÇß½À´Ï´Ù.","Menu Demo",0);
+					MessageBox(hWnd,"ë‘ë²ˆì§¸ ë©”ë‰´ë¥¼ ì„ íƒí–ˆìŠµë‹ˆë‹¤.","Menu Demo",0);
 					break;
 				case ID_FILE_EXIT:
 					DestroyWindow(hWnd);

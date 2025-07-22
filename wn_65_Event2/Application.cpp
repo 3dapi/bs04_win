@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -33,7 +33,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 
 	memset(m_dTh, 0, sizeof(m_dTh));
 	memset(m_hTh, 0, sizeof(m_hTh));
@@ -89,7 +89,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 
 	return S_OK;
@@ -225,12 +225,12 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 		}
 
 		case WM_LBUTTONDOWN:
-			// Manual Reset ModeÀÏ °æ¿ì °­Á¦·Î Event¸¦ ±ú¿ö¾ß ÇÑ´Ù.
+			// Manual Reset Modeì¼ ê²½ìš° ê°•ì œë¡œ Eventë¥¼ ê¹¨ì›Œì•¼ í•œë‹¤.
 			SetEvent(g_hEvent);
 			break;
 
 		case WM_RBUTTONDOWN:
-			// Manual Reset ModeÀÏ °æ¿ì °­Á¦·Î Event¸¦ ±ú¿ö¾ß ÇÑ´Ù.
+			// Manual Reset Modeì¼ ê²½ìš° ê°•ì œë¡œ Eventë¥¼ ê¹¨ì›Œì•¼ í•œë‹¤.
 			ResetEvent(g_hEvent);
 			break;
 

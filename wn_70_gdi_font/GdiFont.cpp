@@ -1,4 +1,4 @@
-// D3D Sprite Tutorial
+ï»¿// D3D Sprite Tutorial
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -19,9 +19,9 @@ HWND				m_hWnd		= NULL;
 DWORD				m_dWinStyle	= WS_OVERLAPPEDWINDOW| WS_VISIBLE;
 DWORD				m_dScnX		= 800;			// Screen Width
 DWORD				m_dScnY		= 600;			// Screen Height
-BOOL				m_bShowCusor= TRUE;			// Show Cusor
+BOOL				m_bShowCursor= TRUE;			// Show Cursor
 
-//Window+Device°ü·Ã ÇÔ¼öµé
+//Window+Deviceê´€ë ¨ í•¨ìˆ˜ë“¤
 INT		Create(HINSTANCE hInst);
 INT		Run();
 void	Cleanup();
@@ -33,9 +33,9 @@ LRESULT WINAPI WndProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam );
 HBRUSH m_brush;
 HFONT  m_font;
 
-char   m_message1[] = "GDI FONT Å×½ºÆ®";
-WCHAR  m_message2[] = L"GDI PLUS FONT Å×½ºÆ®";
-WCHAR  m_font_family [] = L"³ª´®¹Ù¸¥°íµñOTF";
+char   m_message1[] = "GDI FONT í…ŒìŠ¤íŠ¸";
+WCHAR  m_message2[] = L"GDI PLUS FONT í…ŒìŠ¤íŠ¸";
+WCHAR  m_font_family [] = L"ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•OTF";
 
 void OnPaint(HDC hdc);
 
@@ -83,7 +83,7 @@ INT Create( HINSTANCE hInst)
 		0,						//ClipPrecision;
 		ANTIALIASED_QUALITY,	//Quality;
 		FF_DONTCARE,			//PitchAndFamily;
-		"³ª´®¹Ù¸¥°íµñOTF"		//FaceName[LF_FACESIZE];
+		"ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•OTF"		//FaceName[LF_FACESIZE];
 	};
 	m_font = CreateFontIndirect(&logFont);
 
@@ -132,7 +132,7 @@ INT Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 	return 0;
 }

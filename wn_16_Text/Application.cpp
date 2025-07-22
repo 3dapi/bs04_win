@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -21,7 +21,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 
@@ -72,7 +72,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 	return S_OK;
 }
@@ -121,14 +121,14 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			PAINTSTRUCT ps;
 			RECT rt={100,100,400,300};
 
-			char str[]=	"¹°·Ð ³ª´Â ¾Ë°í ÀÖ´Ù.r\n"
-						"¿ÀÁ÷ ¿îÀÌ ÁÁ¾Ò´ø ´öÅÃ¿¡\n"
-						"³ª´Â ±× ¸¹Àº Ä£±¸µéº¸´Ù ¿À·¡ »ì¾Æ ³²¾Ò´Ù.\n"
+			char str[]=	"ë¬¼ë¡  ë‚˜ëŠ” ì•Œê³  ìžˆë‹¤.r\n"
+						"ì˜¤ì§ ìš´ì´ ì¢‹ì•˜ë˜ ë•íƒì—\n"
+						"ë‚˜ëŠ” ê·¸ ë§Žì€ ì¹œêµ¬ë“¤ë³´ë‹¤ ì˜¤ëž˜ ì‚´ì•„ ë‚¨ì•˜ë‹¤.\n"
 						"\n"
-						"±×·¯³ª Áö³­ ¹ã ²Þ¼Ó¿¡¼­\n"
-						"ÀÌ Ä£±¸µéÀÌ ³ª¿¡ ´ëÇÏ¿© ÀÌ¾ß±âÇÏ´Â ¼Ò¸®°¡ µé·Á¿Ô´Ù.\n"
-						"\"°­ÇÑ ÀÚ´Â »ì¾Æ ³²´Â´Ù.\"\n"
-						"±×·¯ÀÚ ³ª´Â ÀÚ½ÅÀÌ ¹Ì¿öÁ³´Ù";
+						"ê·¸ëŸ¬ë‚˜ ì§€ë‚œ ë°¤ ê¿ˆì†ì—ì„œ\n"
+						"ì´ ì¹œêµ¬ë“¤ì´ ë‚˜ì— ëŒ€í•˜ì—¬ ì´ì•¼ê¸°í•˜ëŠ” ì†Œë¦¬ê°€ ë“¤ë ¤ì™”ë‹¤.\n"
+						"\"ê°•í•œ ìžëŠ” ì‚´ì•„ ë‚¨ëŠ”ë‹¤.\"\n"
+						"ê·¸ëŸ¬ìž ë‚˜ëŠ” ìžì‹ ì´ ë¯¸ì›Œì¡Œë‹¤";
 
 			hdc=BeginPaint(hWnd,&ps);
 				TextOut(hdc, 100, 200, str, strlen(str));

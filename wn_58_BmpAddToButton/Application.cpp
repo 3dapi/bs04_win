@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+﻿// Implementation of the CApplication class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -49,7 +49,7 @@ CApplication::CApplication()
 	m_dScnX		= 400;
 	m_dScnY		= 300;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 
 	m_hWndDlg	= 0;
 }
@@ -98,7 +98,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 
 	m_hWndDlg=CreateDialog(m_hInst

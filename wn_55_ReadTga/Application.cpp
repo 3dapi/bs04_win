@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+﻿// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -113,7 +113,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 
 	memset(m_sTga, 0, sizeof(m_sTga));
 	m_pPixel		= NULL;
@@ -167,7 +167,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 
 	return S_OK;

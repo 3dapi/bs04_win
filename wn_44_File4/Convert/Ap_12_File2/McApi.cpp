@@ -1,22 +1,22 @@
-// ¼ºÀû°ü¸® ÇÁ·Î±×·¥
-// °³¿ä : ´ÙÀ½ ¿¹¿Í °°Àº ÆÄÀÏÀÇ ³»¿ëÀ» ÀÔ·Â ¹Þ¾Æ ÃÑÁ¡¼ø/ ÀÌ¸§¼øÀ¸·Î Á¤·ÄÇÑ´Ù.
+ï»¿// ì„±ì ê´€ë¦¬ í”„ë¡œê·¸ëž¨
+// ê°œìš” : ë‹¤ìŒ ì˜ˆì™€ ê°™ì€ íŒŒì¼ì˜ ë‚´ìš©ì„ ìž…ë ¥ ë°›ì•„ ì´ì ìˆœ/ ì´ë¦„ìˆœìœ¼ë¡œ ì •ë ¬í•œë‹¤.
 //
-// ¿¹)
+// ì˜ˆ)
 //CLASS 1 {
 //STUDENTS 12
 //STUDENTLIST {
-//	*REC 1 ÀÌÁÖÀÏ 2002008 80 70 90
-//	*REC 2 ³²±â³² 2002009 90 80 90
-//	*REC 3 ³²Èñ¼® 2002010 90 80 90
-//	*REC 4 ±è¼®Áß 2002011 30 50 70
-//	*REC 5 È«±æµ¿ 2002002 65 80 90
-//	*REC 6 Á¶¿µ³² 2002007 90 80 90
-//	*REC 7 ¿ÀÁß´Þ 2002012 80 80 100
-//	*REC 8 ÀÌ¹«ÀÏ 2002013 90 80 90
-//	*REC 9 ÀÌ¼Ò·æ 2002014 90 80 90
-//	*REC 10 ¹ÚÂùÈ£ 2002015 100 80 90
-//	*REC 11 ¹ÚÀÌ·É 2002017 90 80 50
-//	*REC 12 °í±æµ¿ 2002018 40 100 50
+//	*REC 1 ì´ì£¼ì¼ 2002008 80 70 90
+//	*REC 2 ë‚¨ê¸°ë‚¨ 2002009 90 80 90
+//	*REC 3 ë‚¨í¬ì„ 2002010 90 80 90
+//	*REC 4 ê¹€ì„ì¤‘ 2002011 30 50 70
+//	*REC 5 í™ê¸¸ë™ 2002002 65 80 90
+//	*REC 6 ì¡°ì˜ë‚¨ 2002007 90 80 90
+//	*REC 7 ì˜¤ì¤‘ë‹¬ 2002012 80 80 100
+//	*REC 8 ì´ë¬´ì¼ 2002013 90 80 90
+//	*REC 9 ì´ì†Œë£¡ 2002014 90 80 90
+//	*REC 10 ë°•ì°¬í˜¸ 2002015 100 80 90
+//	*REC 11 ë°•ì´ë ¹ 2002017 90 80 50
+//	*REC 12 ê³ ê¸¸ë™ 2002018 40 100 50
 //	}
 //}
 
@@ -33,11 +33,11 @@
 struct CStudent
 {
 	int nIndex;																	//Index
-	char sName[64];																//ÀÌ¸§
-	char sIdNum[64];															//ÇÐ¹ø
-	int	iKor;																	//±¹¾î
-	int iEng;																	//¿µ¾î
-	int iMth;																	//¼öÇÐ
+	char sName[64];																//ì´ë¦„
+	char sIdNum[64];															//í•™ë²ˆ
+	int	iKor;																	//êµ­ì–´
+	int iEng;																	//ì˜ì–´
+	int iMth;																	//ìˆ˜í•™
 
 	int Rank;
 
@@ -118,9 +118,9 @@ int main()
 		nSize = sizeof(sTmp)/sizeof(sTmp[0]);
 
 
-		for (i=0; i<nSize; ++i)													//'*'¹®ÀÚ¸¦ Ã£´Â´Ù.
+		for (i=0; i<nSize; ++i)													//'*'ë¬¸ìžë¥¼ ì°¾ëŠ”ë‹¤.
 		{
-			if(sTmp[i] =='*')													// *´ÙÀ½ ¹®ÀÚºÎÅÍ ³¡±îÁö ÀÐ´Â´Ù.
+			if(sTmp[i] =='*')													// *ë‹¤ìŒ ë¬¸ìžë¶€í„° ëê¹Œì§€ ì½ëŠ”ë‹¤.
 			{
 
 				for (j=i+1;j<nSize;j++)
@@ -138,15 +138,15 @@ int main()
 				}
 
 
-				strncpy(sTmpClass,sLine, strlen(sCmd[0]) );						//sLine ¿¡¼­ Å°¿öµå¸¦ ºÐ¸®ÇÑ´Ù.
-				if (strcmp(sTmpClass,sCmd[0])==0)								//CLASS ÀÎ°¡ ?
+				strncpy(sTmpClass,sLine, strlen(sCmd[0]) );						//sLine ì—ì„œ í‚¤ì›Œë“œë¥¼ ë¶„ë¦¬í•œë‹¤.
+				if (strcmp(sTmpClass,sCmd[0])==0)								//CLASS ì¸ê°€ ?
 				{
 					int iBgn = strlen(sCmd[0]);
 					int iFnd = sizeof(sLine)/sizeof(sLine[0]);
 
-					for( k= iBgn ; k < iFnd; ++k)								//CLASSÀÌÈÄÀÇ ¹®ÀÚ¿­À» ºÒ·¯ µéÀÎ´Ù.
+					for( k= iBgn ; k < iFnd; ++k)								//CLASSì´í›„ì˜ ë¬¸ìžì—´ì„ ë¶ˆëŸ¬ ë“¤ì¸ë‹¤.
 					{
-						sTmpClassNo[ k-strlen(sCmd[0]) ] = sLine[k];			//CLASS ¹øÈ£¸¦ ±â¾ï
+						sTmpClassNo[ k-strlen(sCmd[0]) ] = sLine[k];			//CLASS ë²ˆí˜¸ë¥¼ ê¸°ì–µ
 
 						if(sLine[k] ==NULL)
 							break;
@@ -157,50 +157,50 @@ int main()
 
 
 				strncpy(sTmpStudents,sLine,strlen(sCmd[1]));
-				if (strcmp(sTmpStudents,sCmd[1])==0)							//STUDENTS ÀÎ°¡
+				if (strcmp(sTmpStudents,sCmd[1])==0)							//STUDENTS ì¸ê°€
 				{
 					int iBgn = strlen(sCmd[1]);
 					int iFnd = sizeof(sLine)/sizeof(sLine[0]);
 
-					for( k= iBgn ; k < iFnd; ++k)								//STUDENTS ÀÌÈÄÀÇ ¹®ÀÚ¿­À» ºÒ·¯ µéÀÎ´Ù.
+					for( k= iBgn ; k < iFnd; ++k)								//STUDENTS ì´í›„ì˜ ë¬¸ìžì—´ì„ ë¶ˆëŸ¬ ë“¤ì¸ë‹¤.
 					{
-						sTmpStudentNum[ k-strlen(sCmd[1]) ]=sLine[k];			//ÇÐ»ý¼ö¸¦ Ã£´Â´Ù.
+						sTmpStudentNum[ k-strlen(sCmd[1]) ]=sLine[k];			//í•™ìƒìˆ˜ë¥¼ ì°¾ëŠ”ë‹¤.
 
 						if(sLine[k] ==NULL)
 							break;
 					}
 
-					iNumStudent = atoi(sTmpStudentNum);						//¹®ÀÚ¿­ ÇÐ»ý¼ö¸¦ Á¤¼ö·Î ¹Ù²Û´Ù.
+					iNumStudent = atoi(sTmpStudentNum);						//ë¬¸ìžì—´ í•™ìƒìˆ˜ë¥¼ ì •ìˆ˜ë¡œ ë°”ê¾¼ë‹¤.
 
-					pBan = new CStudent[iNumStudent];							//ÇÐ»ý¿¡ ´ëÇÑ ±¸Á¶Ã¼¸¦ ÇÒ´çÇÑ´Ù.
+					pBan = new CStudent[iNumStudent];							//í•™ìƒì— ëŒ€í•œ êµ¬ì¡°ì²´ë¥¼ í• ë‹¹í•œë‹¤.
 					break;
 				}
 
 
 				strncpy(sTmpStList,sLine, strlen(sCmd[2]) );
 
-				if (strcmp(sTmpStList,sCmd[2])==0)								//STUDENTLIST ÀÎ°¡
+				if (strcmp(sTmpStList,sCmd[2])==0)								//STUDENTLIST ì¸ê°€
 				{
 					break;
 				}
 
 
 				strncpy(sTmpStudentScore,sLine, strlen(sCmd[3]) );
-				if (strcmp(sTmpStudentScore,sCmd[3])==0)						//STUDENT ÀÎ°¡
+				if (strcmp(sTmpStudentScore,sCmd[3])==0)						//STUDENT ì¸ê°€
 				{
 
 					int iBgn = strlen(sCmd[3]);
 					int iFnd = sizeof(sLine)/sizeof(sLine[0]);
 
-					for( k= iBgn ; k < iFnd; ++k)								//STUDENT ÀÌÈÄÀÇ ¹®ÀÚ¿­À» ºÒ·¯ µéÀÎ´Ù.
+					for( k= iBgn ; k < iFnd; ++k)								//STUDENT ì´í›„ì˜ ë¬¸ìžì—´ì„ ë¶ˆëŸ¬ ë“¤ì¸ë‹¤.
 					{
-						sStScore[k-strlen(sCmd[3])]=sLine[k];					//indexºÎÅÍ ¼öÇÐ±îÁö Á¡¼ö ¸ðµÎ¸¦ º×´Â´Ù.
+						sStScore[k-strlen(sCmd[3])]=sLine[k];					//indexë¶€í„° ìˆ˜í•™ê¹Œì§€ ì ìˆ˜ ëª¨ë‘ë¥¼ ë¶“ëŠ”ë‹¤.
 
 						if(sLine[k] ==NULL)
 							break;
 					}
 
-					sscanf(sStScore,"%d %s %s %d %d %d"							//±¸Á¶Ã¼¿¡ ³Ö´Â´Ù.
+					sscanf(sStScore,"%d %s %s %d %d %d"							//êµ¬ì¡°ì²´ì— ë„£ëŠ”ë‹¤.
 						,	&pBan[nTmpCnt].nIndex
 						,	pBan[nTmpCnt].sName
 						,	pBan[nTmpCnt].sIdNum
@@ -208,7 +208,7 @@ int main()
 						,	&pBan[nTmpCnt].iEng
 						,	&pBan[nTmpCnt].iMth);
 
-					pBan[nTmpCnt].Rank = nTmpCnt+1;								//µî¼ö¸¦ ±×³É ¿Ã¸°´Ù.
+					pBan[nTmpCnt].Rank = nTmpCnt+1;								//ë“±ìˆ˜ë¥¼ ê·¸ëƒ¥ ì˜¬ë¦°ë‹¤.
 
 					nTmpCnt++;
 				}
@@ -228,10 +228,10 @@ int main()
 	LnFile_fclose(fp);
 
 
-	if(iNumStudent !=nTmpCnt)													// ÇÐ»ý¼ö ºÒÀÏÄ¡
+	if(iNumStudent !=nTmpCnt)													// í•™ìƒìˆ˜ ë¶ˆì¼ì¹˜
 		return -1;
 
-	printf("ÆÄÀÏÀÔ·ÂÁ÷ÈÄ\nName\tStudent ID\tKorea\tEnglish\tMath\tTotal\tAverage\tRank\n");
+	printf("íŒŒì¼ìž…ë ¥ì§í›„\nName\tStudent ID\tKorea\tEnglish\tMath\tTotal\tAverage\tRank\n");
 
 
 	for(i=0 ;i<iNumStudent;++i)
@@ -249,14 +249,14 @@ int main()
 
 	printf("\n\n");
 
-	//ÀüÃ¼¼ºÀûÀ¸·Î Á¤·Ä
+	//ì „ì²´ì„±ì ìœ¼ë¡œ ì •ë ¬
 	for (i=0 ; i<iNumStudent-1; ++i)
 	{
 		for(j=i; j<iNumStudent; ++j)
 		{
 			if (
-				pBan[i].Total() < pBan[j].Total()														//¼ºÀûºñ±³
-				||	(pBan[i].Total() == pBan[j].Total() && (strcmp(pBan[j].sName, pBan[i].sName)<0))		//¼ºÀûÀÌ °°À» °æ¿ì ÀÌ¸§¼øÀ¸·Î Á¤·Ä
+				pBan[i].Total() < pBan[j].Total()														//ì„±ì ë¹„êµ
+				||	(pBan[i].Total() == pBan[j].Total() && (strcmp(pBan[j].sName, pBan[i].sName)<0))		//ì„±ì ì´ ê°™ì„ ê²½ìš° ì´ë¦„ìˆœìœ¼ë¡œ ì •ë ¬
 				)
 			{
 				RankSwap(pBan, i,j);
@@ -264,13 +264,13 @@ int main()
 		}
 	}
 
-	//µî¼ö ¸Å±â±â
+	//ë“±ìˆ˜ ë§¤ê¸°ê¸°
 	RankScore(pBan, iNumStudent);
 
 
 
 
-	// ÅØ½ºÆ® ÆÄÀÏ·Î °á°ú Ãâ·Â
+	// í…ìŠ¤íŠ¸ íŒŒì¼ë¡œ ê²°ê³¼ ì¶œë ¥
 	fp = LnFile_fopen("data/ScoreResult.txt", "wt");
 
 	LnFile_fprintf(fp,"%d\n", iNumStudent);
@@ -291,7 +291,7 @@ int main()
 	LnFile_fclose(fp);
 
 
-	// ÀÌÁø ÆÄÀÏ·Î °á°ú Ãâ·Â
+	// ì´ì§„ íŒŒì¼ë¡œ ê²°ê³¼ ì¶œë ¥
 	fp = LnFile_fopen("data/ScoreResult.brn", "wb");
 	LnFile_fwrite(fp, &iNumStudent, sizeof(int) , 1);
 
@@ -304,7 +304,7 @@ int main()
 
 	LnFile_fclose(fp);
 
-	SAFE_DELETE_ARRAY(	pBan	);												//new·Î ¸Þ¸ð¸®¸¦ ÇÒ ´çÇÑ °ÍÀ» ÇØÁ¦
+	SAFE_DELETE_ARRAY(	pBan	);												//newë¡œ ë©”ëª¨ë¦¬ë¥¼ í•  ë‹¹í•œ ê²ƒì„ í•´ì œ
 
 	return 0;
 }
@@ -320,7 +320,7 @@ void RankSwap(CStudent * pBan, int i,int j)
 	memcpy (&pBan[j], &temp, sizeof(CStudent));
 }
 
-//µî¼ö ¸Å±â´Â °Å..
+//ë“±ìˆ˜ ë§¤ê¸°ëŠ” ê±°..
 void RankScore(CStudent * pBan, int nStNumber)
 {
 
@@ -335,9 +335,9 @@ void RankScore(CStudent * pBan, int nStNumber)
 	{
 
 
-		if (pBan[i].Total () == nTempTotal)			//ÃÑÁ¡ÀÌ °°Àº°¡?
+		if (pBan[i].Total () == nTempTotal)			//ì´ì ì´ ê°™ì€ê°€?
 		{
-			pBan[i].Rank = nTempRank;				//Rank¸¦ µ¿ÀÏÇÏ°Ô ÇÑ´Ù.
+			pBan[i].Rank = nTempRank;				//Rankë¥¼ ë™ì¼í•˜ê²Œ í•œë‹¤.
 		}
 
 		else
@@ -350,7 +350,7 @@ void RankScore(CStudent * pBan, int nStNumber)
 
 
 
-	printf("\n\nÀüÃ¼ ¼ºÀû¼øÀ¸·Î Á¤·Ä\n");
+	printf("\n\nì „ì²´ ì„±ì ìˆœìœ¼ë¡œ ì •ë ¬\n");
 	printf("sName\tStudent ID\tKorea\tEnglish\tMath\tTotal\tAverage\tRank\n");
 
 	for(i=0 ;i<nStNumber;++i)

@@ -1,4 +1,4 @@
-// Application.h: interface for the CApplication class.
+﻿// Application.h: interface for the CApplication class.
 //
 //////////////////////////////////////////////////////////////////////
 

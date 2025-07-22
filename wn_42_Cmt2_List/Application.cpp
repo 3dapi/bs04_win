@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -32,7 +32,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 
@@ -101,47 +101,47 @@ INT CApplication::Create( HINSTANCE hInst)
 	#define IDC_EDIT		(WM_USER+7)
 	#define IDC_FIND		(WM_USER+8)
 
-	// ¸®½ºÆ® ÄÁÆ®·ÑÀ» ÀÚ¼¼È÷ º¸±â·Î ¸¸µç´Ù.
+	// ë¦¬ìŠ¤íŠ¸ ì»¨íŠ¸ë¡¤ì„ ìì„¸íˆ ë³´ê¸°ë¡œ ë§Œë“ ë‹¤.
 	m_hList=CreateWindow(WC_LISTVIEW,NULL,WS_CHILD | WS_VISIBLE | WS_BORDER | LVS_REPORT | LVS_SHOWSELALWAYS | LVS_EDITLABELS, 10,10,600,150,m_hWnd,NULL,m_hInst,NULL);
 
-	// Á¤º¸¸¦ ÀÔ·Â¹Ş±â À§ÇÑ ÄÁÆ®·ÑµéÀ» ¸¸µç´Ù.
-	CreateWindow("static"	, "ÀÌ¸§",WS_CHILD | WS_VISIBLE								,  10,170,50,25,m_hWnd,(HMENU)-1,m_hInst,NULL);
+	// ì •ë³´ë¥¼ ì…ë ¥ë°›ê¸° ìœ„í•œ ì»¨íŠ¸ë¡¤ë“¤ì„ ë§Œë“ ë‹¤.
+	CreateWindow("static"	, "ì´ë¦„",WS_CHILD | WS_VISIBLE								,  10,170,50,25,m_hWnd,(HMENU)-1,m_hInst,NULL);
 	CreateWindow("edit"		, NULL	,WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL	,  60,170,90,25,m_hWnd,(HMENU)IDC_NAME,m_hInst,NULL);
-	CreateWindow("static"	, "ÀüÈ­",WS_CHILD | WS_VISIBLE								, 160,170,50,25,m_hWnd,(HMENU)-1,m_hInst,NULL);
+	CreateWindow("static"	, "ì „í™”",WS_CHILD | WS_VISIBLE								, 160,170,50,25,m_hWnd,(HMENU)-1,m_hInst,NULL);
 	CreateWindow("edit"		, NULL	,WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL	, 210,170,90,25,m_hWnd,(HMENU)IDC_TEL,m_hInst,NULL);
-	CreateWindow("static"	, "ÁÖ¼Ò",WS_CHILD | WS_VISIBLE								, 310,170,50,25,m_hWnd,(HMENU)-1,m_hInst,NULL);
+	CreateWindow("static"	, "ì£¼ì†Œ",WS_CHILD | WS_VISIBLE								, 310,170,50,25,m_hWnd,(HMENU)-1,m_hInst,NULL);
 	CreateWindow("edit"		, NULL	,WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL	, 360,170,190,25,m_hWnd,(HMENU)IDC_ADDR,m_hInst,NULL);
 
-	m_hMale=CreateWindow("button","³²ÀÚ",WS_CHILD | WS_VISIBLE | BS_AUTOCHECKBOX,560,170,100,25,m_hWnd,(HMENU)IDC_MALE,m_hInst,NULL);
+	m_hMale=CreateWindow("button","ë‚¨ì",WS_CHILD | WS_VISIBLE | BS_AUTOCHECKBOX,560,170,100,25,m_hWnd,(HMENU)IDC_MALE,m_hInst,NULL);
 
-	// ¸í·É ¹öÆ°
-	CreateWindow("button","Ãß°¡",WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 110,200,90,25,m_hWnd,(HMENU)IDC_ADD,m_hInst,NULL);
-	CreateWindow("button","»èÁ¦",WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 210,200,90,25,m_hWnd,(HMENU)IDC_DEL,m_hInst,NULL);
-	CreateWindow("button","¼öÁ¤",WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 310,200,90,25,m_hWnd,(HMENU)IDC_EDIT,m_hInst,NULL);
-	CreateWindow("button","°Ë»ö",WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 410,200,90,25,m_hWnd,(HMENU)IDC_FIND,m_hInst,NULL);
+	// ëª…ë ¹ ë²„íŠ¼
+	CreateWindow("button","ì¶”ê°€",WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 110,200,90,25,m_hWnd,(HMENU)IDC_ADD,m_hInst,NULL);
+	CreateWindow("button","ì‚­ì œ",WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 210,200,90,25,m_hWnd,(HMENU)IDC_DEL,m_hInst,NULL);
+	CreateWindow("button","ìˆ˜ì •",WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 310,200,90,25,m_hWnd,(HMENU)IDC_EDIT,m_hInst,NULL);
+	CreateWindow("button","ê²€ìƒ‰",WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 410,200,90,25,m_hWnd,(HMENU)IDC_FIND,m_hInst,NULL);
 
-	// Å©±âº°·Î µÎ Á¾·ùÀÇ ÀÌ¹ÌÁö ¸®½ºÆ®¸¦ ¸¸µé°í ¸®½ºÆ® ÄÁÆ®·Ñ¿¡ ¿¬°áÇÑ´Ù.
+	// í¬ê¸°ë³„ë¡œ ë‘ ì¢…ë¥˜ì˜ ì´ë¯¸ì§€ ë¦¬ìŠ¤íŠ¸ë¥¼ ë§Œë“¤ê³  ë¦¬ìŠ¤íŠ¸ ì»¨íŠ¸ë¡¤ì— ì—°ê²°í•œë‹¤.
 	m_hImgSm=ImageList_LoadBitmap(m_hInst, MAKEINTRESOURCE(IDB_BITMAP1), 16, 1, RGB(255,255,255));
 	m_hImgLa=ImageList_LoadBitmap(m_hInst, MAKEINTRESOURCE(IDB_BITMAP2), 32, 1, RGB(255,255,255));
 	ListView_SetImageList(m_hList, m_hImgSm, LVSIL_SMALL);
 	ListView_SetImageList(m_hList, m_hImgLa, LVSIL_NORMAL);
 
-	// Çì´õ¸¦ Ãß°¡ÇÑ´Ù.
+	// í—¤ë”ë¥¼ ì¶”ê°€í•œë‹¤.
 	LVCOLUMN	COL;
 
 	COL.mask=LVCF_FMT | LVCF_WIDTH | LVCF_TEXT |LVCF_SUBITEM;
 	COL.fmt=LVCFMT_LEFT;
 	COL.cx=150;
-	COL.pszText="ÀÌ¸§";			// Ã¹¹øÂ° Çì´õ
+	COL.pszText="ì´ë¦„";			// ì²«ë²ˆì§¸ í—¤ë”
 	COL.iSubItem=0;
 	ListView_InsertColumn(m_hList,0,&COL);
 
-	COL.pszText="ÀüÈ­¹øÈ£";		// µÎ¹øÂ° Çì´õ
+	COL.pszText="ì „í™”ë²ˆí˜¸";		// ë‘ë²ˆì§¸ í—¤ë”
 	COL.iSubItem=1;
 	ListView_InsertColumn(m_hList,1,&COL);
 
 	COL.cx=250;
-	COL.pszText="ÁÖ¼Ò";			// ¼¼¹øÂ° Çì´õ
+	COL.pszText="ì£¼ì†Œ";			// ì„¸ë²ˆì§¸ í—¤ë”
 	COL.iSubItem=2;
 	ListView_InsertColumn(m_hList,2,&COL);
 
@@ -150,15 +150,15 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	std::vector<std::tuple<std::string, std::string, std::string, int> > people
 	{
-		std::make_tuple("±è»óÇü","123-4567","¼­¿ï½Ã °­³²±¸ ³íÇöµ¿",TRUE),
-		std::make_tuple("ÀÌ¼Û¿ì","543-9876","¼­¿ï½Ã ±¸ÀÇµ¿",TRUE),
-		std::make_tuple("¹Ú´ÙÈñ","111-3333","°æ±âµµ ±¤¸í½Ã",FALSE),
-		std::make_tuple("¿À±Ã¼·","236-1818","¼­¿ï½Ã °­³²±¸ ¹İÆ÷µ¿",TRUE),
-		std::make_tuple("Á¶±â¼ø","358-2277","¼­¿ï½Ã ¾Ğ±¸Á¤µ¿",FALSE),
-		std::make_tuple("¿À¹ğÈÆ","548-1109","¼­¿ï½Ã ½Å»çµ¿",TRUE),
+		std::make_tuple("ê¹€ìƒí˜•","123-4567","ì„œìš¸ì‹œ ê°•ë‚¨êµ¬ ë…¼í˜„ë™",TRUE),
+		std::make_tuple("ì´ì†¡ìš°","543-9876","ì„œìš¸ì‹œ êµ¬ì˜ë™",TRUE),
+		std::make_tuple("ë°•ë‹¤í¬","111-3333","ê²½ê¸°ë„ ê´‘ëª…ì‹œ",FALSE),
+		std::make_tuple("ì˜¤ê¶ì„­","236-1818","ì„œìš¸ì‹œ ê°•ë‚¨êµ¬ ë°˜í¬ë™",TRUE),
+		std::make_tuple("ì¡°ê¸°ìˆœ","358-2277","ì„œìš¸ì‹œ ì••êµ¬ì •ë™",FALSE),
+		std::make_tuple("ì˜¤ë±…í›ˆ","548-1109","ì„œìš¸ì‹œ ì‹ ì‚¬ë™",TRUE),
 	};
 
-	// ÅØ½ºÆ®¿Í ÀÌ¹ÌÁö¸¦ °¡Áø ¾ÆÀÌÅÛµéÀ» µî·ÏÇÑ´Ù.
+	// í…ìŠ¤íŠ¸ì™€ ì´ë¯¸ì§€ë¥¼ ê°€ì§„ ì•„ì´í…œë“¤ì„ ë“±ë¡í•œë‹¤.
 	LVITEM		LI;
 	auto it = people.begin();
 	for (int i=0; i<10 && it != people.end();i++, ++it)
@@ -182,7 +182,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 	return S_OK;
 }
@@ -258,7 +258,7 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 					SetListViewStyle(m_hList, LVS_REPORT);
 					break;
 
-				// »õ Ç×¸ñÀ» Ãß°¡ÇÑ´Ù.
+				// ìƒˆ í•­ëª©ì„ ì¶”ê°€í•œë‹¤.
 				case IDC_ADD:
 				{
 					LVITEM	LI;
@@ -291,7 +291,7 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 					break;
 				}
 
-				// ¼±ÅÃÇÑ Ç×¸ñÀ» »èÁ¦ÇÑ´Ù.
+				// ì„ íƒí•œ í•­ëª©ì„ ì‚­ì œí•œë‹¤.
 				case IDC_DEL:
 				{
 					int		idx;
@@ -299,14 +299,14 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 					idx=ListView_GetNextItem(m_hList,-1,LVNI_ALL | LVNI_SELECTED);
 
 					if (idx == -1)
-						MessageBox(hWnd,"»èÁ¦ÇÒ Ç×¸ñÀ» ¸ÕÀú ¼±ÅÃÇÏ½Ê½Ã¿ä","¾Ë¸²",MB_OK);
+						MessageBox(hWnd,"ì‚­ì œí•  í•­ëª©ì„ ë¨¼ì € ì„ íƒí•˜ì‹­ì‹œìš”","ì•Œë¦¼",MB_OK);
 					else
 						ListView_DeleteItem(m_hList, idx);
 
 					break;
 				}
 
-				// ¼±ÅÃÇÑ Ç×¸ñÀ» ¼öÁ¤ÇÑ´Ù.
+				// ì„ íƒí•œ í•­ëª©ì„ ìˆ˜ì •í•œë‹¤.
 				case IDC_EDIT:
 				{
 					LVITEM	LI;
@@ -323,7 +323,7 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 
 					if (idx == -1)
 					{
-						MessageBox(hWnd,"¼öÁ¤ÇÒ Ç×¸ñÀ» ¸ÕÀú ¼±ÅÃÇÏ½Ê½Ã¿ä","¾Ë¸²",MB_OK);
+						MessageBox(hWnd,"ìˆ˜ì •í•  í•­ëª©ì„ ë¨¼ì € ì„ íƒí•˜ì‹­ì‹œìš”","ì•Œë¦¼",MB_OK);
 					}
 
 					else
@@ -346,7 +346,7 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 					break;
 				}
 
-				// ÀÌ¸§À¸·Î Ç×¸ñÀ» °Ë»öÇÑ´Ù.
+				// ì´ë¦„ìœ¼ë¡œ í•­ëª©ì„ ê²€ìƒ‰í•œë‹¤.
 				case IDC_FIND:
 				{
 					LVFINDINFO	fi;
@@ -362,7 +362,7 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 
 					if (idx==-1)
 					{
-						MessageBox(hWnd,"ÁöÁ¤ÇÑ ÀÌ¸§ÀÇ Ç×¸ñÀº ¾ø½À´Ï´Ù","¾Ë¸²",MB_OK);
+						MessageBox(hWnd,"ì§€ì •í•œ ì´ë¦„ì˜ í•­ëª©ì€ ì—†ìŠµë‹ˆë‹¤","ì•Œë¦¼",MB_OK);
 					}
 					else
 					{
@@ -390,7 +390,7 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			{
 				switch (hdr->code)
 				{
-					// ¼±ÅÃµÈ Ç×¸ñÀ» ¿¡µğÆ®¿¡ º¸¿©ÁØ´Ù.
+					// ì„ íƒëœ í•­ëª©ì„ ì—ë””íŠ¸ì— ë³´ì—¬ì¤€ë‹¤.
 					case LVN_ITEMCHANGED:
 					{
 						if (nlv->uChanged == LVIF_STATE && nlv->uNewState == (LVIS_SELECTED | LVIS_FOCUSED))

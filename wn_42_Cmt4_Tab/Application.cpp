@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+﻿// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -27,7 +27,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 
@@ -91,7 +91,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 	return S_OK;
 }
@@ -232,7 +232,7 @@ INT_PTR CALLBACK WndWrk(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			tie.iImage=1;
 			TabCtrl_InsertItem(GMAIN->m_hwWrkTb,1,&tie);
 
-			// �ڽ� ������ ���̱�..
+			// 자식 윈도우 붙이기..
 			GMAIN->m_hwWrk1 = CreateDialog(GHINST,MAKEINTRESOURCE(IDD_WORK1), hWnd, (DLGPROC)WndWrk1);
 
 			ShowWindow(GMAIN->m_hwWrk1, SW_SHOW);
@@ -329,7 +329,7 @@ INT_PTR CALLBACK WndWrk1(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			{
 				switch (hdr->code)
 				{
-					// ���õ� �׸��� �����ش�.
+					// 선택된 항목을 보여준다.
 					case TVN_SELCHANGED:
 					{
 						TvResEx.mask=TVIF_PARAM | TVIF_TEXT;
@@ -351,7 +351,7 @@ INT_PTR CALLBACK WndWrk1(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 							TvResPr.cchTextMax=sizeof(sResPrn);
 							TreeView_GetItem(hTree,&TvResPr);
 
-							// ���⼭ Work2�� �����͸� ä�� �ִ´�
+							// 여기서 Work2의 데이터를 채워 넣는다
 
 							TCHAR sIdMst[256];
 							TCHAR sIdSub[256];
