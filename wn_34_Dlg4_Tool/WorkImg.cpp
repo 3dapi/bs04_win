@@ -1,4 +1,4 @@
-
+﻿
 #include "_StdAfx.h"
 
 INT_PTR CALLBACK WndImgSrc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)

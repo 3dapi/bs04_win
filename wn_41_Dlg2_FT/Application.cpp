@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +28,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 
@@ -79,7 +79,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 
 	return S_OK;
@@ -145,7 +145,7 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 					OFN.lpstrFilter="Text Files(*.txt)\0*.txt\0All Files(*.*)\0*.*\0";
 					OFN.lpstrFile=lpstrFile;
 					OFN.nMaxFile=MAX_PATH;
-					OFN.lpstrTitle="ÆÄÀÏÀ» ¼±ÅÃÇØ ÁÖ½Ê½Ã¿ä";
+					OFN.lpstrTitle="íŒŒì¼ì„ ì„ íƒí•´ ì£¼ì‹­ì‹œìš”";
 					OFN.lpstrFileTitle=szFileTitle;
 					OFN.nMaxFileTitle=MAX_PATH;
 					OFN.lpstrDefExt="abc";
@@ -154,10 +154,10 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 
 					if (GetOpenFileName(&OFN)!=0)
 					{
-						wsprintf(str,"%s ÆÄÀÏÀ» ¼±ÅÃÇß½À´Ï´Ù. ÆÄÀÏ¸íÀº %sÀÔ´Ï´Ù."
-							"ÆÄÀÏ¸í ¿ÀÇÁ¼Â=%d, È®ÀåÀÚ ¿ÀÇÁ¼Â=%d",
+						wsprintf(str,"%s íŒŒì¼ì„ ì„ íƒí–ˆìŠµë‹ˆë‹¤. íŒŒì¼ëª…ì€ %sì…ë‹ˆë‹¤."
+							"íŒŒì¼ëª… ì˜¤í”„ì…‹=%d, í™•ì¥ì ì˜¤í”„ì…‹=%d",
 							lpstrFile,szFileTitle,OFN.nFileOffset, OFN.nFileExtension);
-						MessageBox(hWnd,str,"ÆÄÀÏ ¿­±â ¼º°ø",MB_OK);
+						MessageBox(hWnd,str,"íŒŒì¼ ì—´ê¸° ì„±ê³µ",MB_OK);
 					}
 
 

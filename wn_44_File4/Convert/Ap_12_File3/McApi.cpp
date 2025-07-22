@@ -1,7 +1,7 @@
-// binary data read
-// ÀÛ¼ºÀÚ : ¿ÀÈñ¼º
-// ÀÛ¼ºÀÏ : 2002. 3. 5.
-// °³¿ä : ´ÙÀ½ ¿¹¿Í °°Àº ÆÄÀÏÀÇ ³»¿ëÀ» ÀÔ·Â ¹Ş¾Æ ÃÑÁ¡¼ø/ ÀÌ¸§¼øÀ¸·Î Á¤·ÄÇÑ´Ù.
+ï»¿// binary data read
+// ì‘ì„±ì : ì˜¤í¬ì„±
+// ì‘ì„±ì¼ : 2002. 3. 5.
+// ê°œìš” : ë‹¤ìŒ ì˜ˆì™€ ê°™ì€ íŒŒì¼ì˜ ë‚´ìš©ì„ ì…ë ¥ ë°›ì•„ ì´ì ìˆœ/ ì´ë¦„ìˆœìœ¼ë¡œ ì •ë ¬í•œë‹¤.
 
 #include <stdio.h>
 #include <string.h>
@@ -15,11 +15,11 @@
 struct CStudent
 {
 	int nIndex;																	//Index
-	char sName[64];																//ÀÌ¸§
-	char sIdNum[64];															//ÇĞ¹ø
-	int	iKor;																	//±¹¾î
-	int iEng;																	//¿µ¾î
-	int iMth;																	//¼öÇĞ
+	char sName[64];																//ì´ë¦„
+	char sIdNum[64];															//í•™ë²ˆ
+	int	iKor;																	//êµ­ì–´
+	int iEng;																	//ì˜ì–´
+	int iMth;																	//ìˆ˜í•™
 
 	int Rank;
 
@@ -85,7 +85,7 @@ int main(void)
 		printf("\n");
 	}
 
-	SAFE_DELETE_ARRAY(	pBan	);												//new·Î ¸Ş¸ğ¸®¸¦ ÇÒ ´çÇÑ °ÍÀ» ÇØÁ¦
+	SAFE_DELETE_ARRAY(	pBan	);												//newë¡œ ë©”ëª¨ë¦¬ë¥¼ í•  ë‹¹í•œ ê²ƒì„ í•´ì œ
 
 	return 0;
 }

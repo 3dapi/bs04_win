@@ -1,4 +1,4 @@
-// Event Test
+ï»¿// Event Test
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -18,8 +18,8 @@ void main()
 	// Event Create
 	m_Evnt = CreateEvent(
 			NULL
-		,	FALSE	// ÀÌ ºÎºĞÀÌ TRUE¸é WaitForSingleObject ÈÄ¿¡µµ °è¼Ó Signaled°¡ µ·´Ù. ¼öµ¿À¸·Î ResetEvent¸¦ È£ÃâÇØ¾ß ÇÑ´Ù.
-		,	TRUE	// Ã³À½ ½ÃÀÛÀ» Signaled·Î ÇÒ°ÍÀÎ°¡ °áÁ¤ÇÑ´Ù.
+		,	FALSE	// ì´ ë¶€ë¶„ì´ TRUEë©´ WaitForSingleObject í›„ì—ë„ ê³„ì† Signaledê°€ ëˆë‹¤. ìˆ˜ë™ìœ¼ë¡œ ResetEventë¥¼ í˜¸ì¶œí•´ì•¼ í•œë‹¤.
+		,	TRUE	// ì²˜ìŒ ì‹œì‘ì„ Signaledë¡œ í• ê²ƒì¸ê°€ ê²°ì •í•œë‹¤.
 		,	NULL
 		);
 
@@ -40,7 +40,7 @@ void main()
 
 
 
-//ÀÔ Ãâ·Â ¿Ï·á Ã³¸®
+//ì… ì¶œë ¥ ì™„ë£Œ ì²˜ë¦¬
 DWORD WINAPI WorkProc(void* pParam)
 {
 	INT	hr=-1;

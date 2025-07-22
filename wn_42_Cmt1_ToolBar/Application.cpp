@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -27,7 +27,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 
@@ -105,7 +105,7 @@ INT CApplication::Create( HINSTANCE hInst)
 	}
 
 	m_hToolBar=CreateToolbarEx(m_hWnd
-		, WS_CHILD | WS_VISIBLE | WS_BORDER  | TBSTYLE_TOOLTIPS		// ¹Ýµå½Ã WS_CHILD°¡ ºÙ¾î¾ß..
+		, WS_CHILD | WS_VISIBLE | WS_BORDER  | TBSTYLE_TOOLTIPS		// ë°˜ë“œì‹œ WS_CHILDê°€ ë¶™ì–´ì•¼..
 		, ID_TOOLBAR
 		, 3															// Bmp Number
 		, m_hInst
@@ -118,7 +118,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 	return S_OK;
 }

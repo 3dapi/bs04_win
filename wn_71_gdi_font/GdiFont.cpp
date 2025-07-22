@@ -1,4 +1,4 @@
-// D3D Sprite Tutorial
+ï»¿// D3D Sprite Tutorial
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -48,9 +48,9 @@ HWND				m_hWnd		= NULL;
 DWORD				m_dWinStyle	= WS_OVERLAPPEDWINDOW| WS_VISIBLE;
 DWORD				m_dScnX		= 800;			// Screen Width
 DWORD				m_dScnY		= 600;			// Screen Height
-BOOL				m_bShowCusor= TRUE;			// Show Cusor
+BOOL				m_bShowCursor= TRUE;			// Show Cursor
 
-//Window+Device°ü·Ã ÇÔ¼öµé
+//Window+Deviceê´€ë ¨ í•¨ìˆ˜ë“¤
 INT		Create(HINSTANCE hInst);
 INT		Run();
 void	Cleanup();
@@ -79,8 +79,8 @@ static std::string ToMultiByteString(const wchar_t* w_str)
 HFONT   m_font;
 LOGFONT m_FontLog={0};
 char    m_fontFile[] ="_font/NanumBarunGothic.otf";
-char    m_message1[] = "GDI FONT Å×½ºÆ®";
-char    m_message2[] = "GDI PLUS FONT Å×½ºÆ®";
+char    m_message1[] = "GDI FONT í…ŒìŠ¤íŠ¸";
+char    m_message2[] = "GDI PLUS FONT í…ŒìŠ¤íŠ¸";
 static GdiPlusStarter	g_gdiStarter;
 Gdiplus::FontFamily*	g_gdiFontFamily = NULL;
 
@@ -187,7 +187,7 @@ static int CreatePrivateFontFamily(const char* font_file)
 		0,						//ClipPrecision;
 		ANTIALIASED_QUALITY,	//Quality;
 		FF_DONTCARE,			//PitchAndFamily;
-		"³ª´®¹Ù¸¥°íµñOTF"		//FaceName[LF_FACESIZE];
+		"ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•OTF"		//FaceName[LF_FACESIZE];
 	};
 	m_font = CreateFontIndirect(&logFont);
 
@@ -258,7 +258,7 @@ INT Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 	return 0;
 }

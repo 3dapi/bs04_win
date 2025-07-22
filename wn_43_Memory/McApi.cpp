@@ -1,4 +1,4 @@
-#pragma comment(lib, "Winmm.lib")
+ï»¿#pragma comment(lib, "Winmm.lib")
 
 #include <windows.h>
 #include <mmsystem.h>
@@ -143,14 +143,14 @@ void Virtual_Alloc()
 	printf("-- WINAPI VirtualAlloc funciton\n");
 
 
-	// ¸Ş¸ğ¸® ÁÖ¼Ò °ø°£ ¿¹¾à(MEM_RESERVE)
+	// ë©”ëª¨ë¦¬ ì£¼ì†Œ ê³µê°„ ì˜ˆì•½(MEM_RESERVE)
 	INT	iSmallSize = 12 * sizeof(char);
 	char* pBegin = (char*)VirtualAlloc(NULL, iMemSize, MEM_RESERVE, PAGE_READWRITE);
 
-	//MEM_RESERVEÀÏ °æ¿ì ÁÖ¼Ò °ø°£¸¸ ÇÒ´çÇÑ °ÍÀÌ¶ó ¿¡·¯
+	//MEM_RESERVEì¼ ê²½ìš° ì£¼ì†Œ ê³µê°„ë§Œ í• ë‹¹í•œ ê²ƒì´ë¼ ì—ëŸ¬
 	//memset(pBegin, 0, iMemSize);
 
-	//¿¹¾à µÈ ¸Ş¸ğ¸® »ç¿ëÇÏ±â
+	//ì˜ˆì•½ ëœ ë©”ëª¨ë¦¬ ì‚¬ìš©í•˜ê¸°
 	char* pNext= (char*)VirtualAlloc(pBegin, iSmallSize, MEM_COMMIT, PAGE_READWRITE);
 
 
@@ -233,7 +233,7 @@ void Heap_Alloc()
 
 	for(i=0; i<iN; ++i)
 	{
-		// Win32 Èü ÇÔ¼ö¸¦ »ç¿ëÇÑ ¸Ş¸ğ¸® ÇÒ´ç
+		// Win32 í™ í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•œ ë©”ëª¨ë¦¬ í• ë‹¹
 		pMem=(char*)HeapAlloc(hMem, 0, iMemSize);
 		memset(pMem, 0, iMemSize);
 		HeapFree(GetProcessHeap(), 0, pMem);

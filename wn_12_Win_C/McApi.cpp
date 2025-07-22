@@ -1,4 +1,4 @@
-// D3D Sprite toturial
+ï»¿// D3D Sprite toturial
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -14,10 +14,10 @@ DWORD		m_dWinStyle	= WS_OVERLAPPEDWINDOW| WS_VISIBLE;
 DWORD		m_dScnX		= 800;			// Screen Width
 DWORD		m_dScnY		= 600;			// Screen Height
 
-bool		m_bShowCusor= true;			// Show Cusor
+bool		m_bShowCursor= true;			// Show Cursor
 
 
-//Window+Device°ü·Ã ÇÔ¼öµé
+//Window+Deviceê´€ë ¨ í•¨ìˆ˜ë“¤
 INT		Create(HINSTANCE hInst);
 INT		Run();
 void	Cleanup();
@@ -70,7 +70,7 @@ INT Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 	return S_OK;
 }

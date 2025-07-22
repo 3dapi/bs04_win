@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 
@@ -74,7 +74,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 	return S_OK;
 }
@@ -161,7 +161,7 @@ void CApplication::OnPaint()
 	HPEN MyPen, OldPen;
 
 
-	// Brush »ı¼º
+	// Brush ìƒì„±
 	LOGBRUSH lBrush =
 	{
 		BS_SOLID,
@@ -186,12 +186,12 @@ void CApplication::OnPaint()
 	hdc=BeginPaint(m_hWnd,&ps);
 
 
-	// DCÀÇ Brush¿Í PenÀ» »õ·Î¿î °´Ã¼·Î ¼³Á¤ÇÏ°í ÀÌÀüÀÇ
-	// Brush¿Í Pen °´Ã¼¸¦ ÀúÀå
+	// DCì˜ Brushì™€ Penì„ ìƒˆë¡œìš´ ê°ì²´ë¡œ ì„¤ì •í•˜ê³  ì´ì „ì˜
+	// Brushì™€ Pen ê°ì²´ë¥¼ ì €ì¥
 	OldBrush=(HBRUSH)SelectObject(hdc,MyBrush);
 	OldPen	=(HPEN)SelectObject(hdc, MyPen);
 
-	// µµÇüÀ» ±×¸°´Ù.
+	// ë„í˜•ì„ ê·¸ë¦°ë‹¤.
 	MoveToEx(hdc,350,250,NULL);	LineTo(hdc,280,300);
 	Rectangle(hdc,400,100,450,180);
 	Ellipse(hdc,400,300,550,380);
@@ -223,14 +223,14 @@ void CApplication::OnPaint()
 	Polygon(hdc, pt2, 5);
 
 
-	// ÀÌÀüÀÇ Brush, Pen °´Ã¼¸¦ µ¹·ÁÁÜ
+	// ì´ì „ì˜ Brush, Pen ê°ì²´ë¥¼ ëŒë ¤ì¤Œ
 	SelectObject(hdc,OldBrush);
 	SelectObject(hdc,OldPen);
 
 	EndPaint(m_hWnd,&ps);
 
 
-	// »ı¼ºÇÑ ºê·¯½¬, Ææ °´Ã¼¸¦ ¼Ò¸ê½ÃÅ´
+	// ìƒì„±í•œ ë¸ŒëŸ¬ì‰¬, íœ ê°ì²´ë¥¼ ì†Œë©¸ì‹œí‚´
 	DeleteObject(MyBrush);
 	DeleteObject(MyPen);
 }

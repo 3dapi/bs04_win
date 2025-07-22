@@ -1,4 +1,4 @@
-// D3D Sprite toturial
+ï»¿// D3D Sprite toturial
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -16,8 +16,8 @@ INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR, INT )
 
 	if(g_hSmph)
 	{
-		// µ¿ÀÏÇÑ ÇÁ·Î±×·¥ÀÌ ½ÇÇàµÇ°í ÀÖ´ÂÁö È®ÀÎ
-		MessageBox(0, "Áßº¹½ÇÇà", "Error", 0);
+		// ë™ì¼í•œ í”„ë¡œê·¸ë¨ì´ ì‹¤í–‰ë˜ê³  ìˆëŠ”ì§€ í™•ì¸
+		MessageBox(0, "ì¤‘ë³µì‹¤í–‰", "Error", 0);
 	}
 
 
@@ -25,7 +25,7 @@ INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR, INT )
 
 	if (WaitForSingleObject(g_hSmph,0) == WAIT_TIMEOUT)
 	{
-		MessageBox(0, "4°³ ÃÊ°ú Áßº¹½ÇÇà", "Error", 0);
+		MessageBox(0, "4ê°œ ì´ˆê³¼ ì¤‘ë³µì‹¤í–‰", "Error", 0);
 		CloseHandle(g_hSmph);
 
 		return -1;

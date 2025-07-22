@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +28,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 
@@ -79,7 +79,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 
 	return S_OK;
@@ -136,14 +136,14 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 					memset(&OFN, 0, sizeof(OPENFILENAME));
 					OFN.lStructSize = sizeof(OPENFILENAME);
 					OFN.hwndOwner=hWnd;
-					OFN.lpstrFilter="¸ğµç ÆÄÀÏ(*.*)\0*.*\0";
+					OFN.lpstrFilter="ëª¨ë“  íŒŒì¼(*.*)\0*.*\0";
 					OFN.lpstrFile=lpstrFile;
 					OFN.nMaxFile=MAX_PATH;
 
 					if (GetOpenFileName(&OFN)!=0)
 					{
-						wsprintf(str,"%s ÆÄÀÏÀ» ¼±ÅÃÇß½À´Ï´Ù.",OFN.lpstrFile);
-						MessageBox(hWnd,str,"ÆÄÀÏ ¿­±â ¼º°ø",MB_OK);
+						wsprintf(str,"%s íŒŒì¼ì„ ì„ íƒí–ˆìŠµë‹ˆë‹¤.",OFN.lpstrFile);
+						MessageBox(hWnd,str,"íŒŒì¼ ì—´ê¸° ì„±ê³µ",MB_OK);
 					}
 
 					break;

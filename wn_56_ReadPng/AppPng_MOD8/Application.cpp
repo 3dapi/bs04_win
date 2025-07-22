@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -36,7 +36,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 
 	memset(m_sPng, 0, sizeof m_sPng);
 }
@@ -89,7 +89,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 /*
 	std::vector<COLOR3>	color3;
@@ -248,7 +248,7 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 								pDst[idx1+2] = pSrc[idx2 + 0];
 							}
 
-							// ÇÈ¼¿ º¹»ç
+							// í”½ì…€ ë³µì‚¬
 							m_Png = tpPng;
 							m_Png.Destroy();
 							m_Png.SetPixelData(pDst);
@@ -348,14 +348,14 @@ void CApplication::Render()
 	hdc=GetDC(m_hWnd);
 
 
-	// Caution: ÀÌ¹ÌÁöÀÇ ÆøÀÌ È¦¼öÀÌ¸é ÀÌ¸¦ 4ÀÇ ¹è¼ö·Î ´Ã·Á¼­
-	// »ö»óÀ» ÀçÁ¶Á¤ÇØ¾ß ÇÑ´Ù.
-	// µû¶ó¼­ ÀÌ¹ÌÁöÀÇ Å©±â¸¦ 4ÀÇ ¹è¼ö·Î Á¤ÇÏ´Â °ÍÀÌ °¡Àå ÁÁ´Ù.
-	// ¾Æ·¡´ÂÁ¤½ÄÀ¸·Î 4ÀÇ ¹è¼ö·Î ¸¸µå´Â ¹æ¹ýÀÌ ¾Æ´Ï¶ó Æí¹ýÀÌ´Ù.
+	// Caution: ì´ë¯¸ì§€ì˜ í­ì´ í™€ìˆ˜ì´ë©´ ì´ë¥¼ 4ì˜ ë°°ìˆ˜ë¡œ ëŠ˜ë ¤ì„œ
+	// ìƒ‰ìƒì„ ìž¬ì¡°ì •í•´ì•¼ í•œë‹¤.
+	// ë”°ë¼ì„œ ì´ë¯¸ì§€ì˜ í¬ê¸°ë¥¼ 4ì˜ ë°°ìˆ˜ë¡œ ì •í•˜ëŠ” ê²ƒì´ ê°€ìž¥ ì¢‹ë‹¤.
+	// ì•„ëž˜ëŠ”ì •ì‹ìœ¼ë¡œ 4ì˜ ë°°ìˆ˜ë¡œ ë§Œë“œëŠ” ë°©ë²•ì´ ì•„ë‹ˆë¼ íŽ¸ë²•ì´ë‹¤.
 	//long	nWidth = ((3 * m_Png.nWidth + 3L) >> 2) << 2;
 	//nWidth	/=3;
 
-	// ÀÌ¹ÌÁö¸¦ 4ÀÇ ¹è¼ö·Î Á¶Á¤ÇÏ°í ÀÌ·¸°Ô ÇÏ´Â °ÍÀÌ ÁÁ´Ù.
+	// ì´ë¯¸ì§€ë¥¼ 4ì˜ ë°°ìˆ˜ë¡œ ì¡°ì •í•˜ê³  ì´ë ‡ê²Œ í•˜ëŠ” ê²ƒì´ ì¢‹ë‹¤.
 	long nWidth		= m_Png.nWidth;
 
 	bh.biSize		= sizeof(BITMAPINFOHEADER);

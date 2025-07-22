@@ -1,4 +1,4 @@
-// Application.cpp: implementation of the CApplication class.
+ï»¿// Application.cpp: implementation of the CApplication class.
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -104,7 +104,7 @@ LRESULT CApplication::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 
 			hdc = BeginPaint(hWnd, &ps);
 			GetClientRect(hWnd, &rt);
-			DrawText(hdc, "¾È³çÇÏ¼¼¿ä", strlen("¾È³çÇÏ¼¼¿ä"), &rt, DT_CENTER);
+			DrawText(hdc, "ì•ˆë…•í•˜ì„¸ìš”", strlen("ì•ˆë…•í•˜ì„¸ìš”"), &rt, DT_CENTER);
 			EndPaint(hWnd, &ps);
 			return 0;
 

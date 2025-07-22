@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -29,7 +29,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 
 	m_dThread	= 0;
 	m_hThread	= 0;
@@ -83,7 +83,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 
 	return S_OK;
@@ -148,7 +148,7 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 
 					ResumeThread(m_hThread);
 
-					//¾²·¹µå ¿ì¼±¼øÀ§¼³Á¤
+					//ì“°ë ˆë“œ ìš°ì„ ìˆœìœ„ì„¤ì •
 					SetThreadPriority(m_hThread, THREAD_PRIORITY_NORMAL);
 					break;
 				}
@@ -229,7 +229,7 @@ void CApplication::Render()
 
 
 
-// ½º·¹µå ÇÔ¼ö¿¡¼­´Â »ö»óÀ» °è¼Ó º¯°æÇØ °¡¸ç »ç°¢ÇüÀ» ±×¸°´Ù.
+// ìŠ¤ë ˆë“œ í•¨ìˆ˜ì—ì„œëŠ” ìƒ‰ìƒì„ ê³„ì† ë³€ê²½í•´ ê°€ë©° ì‚¬ê°í˜•ì„ ê·¸ë¦°ë‹¤.
 DWORD WINAPI ThreadFunc(void* pParam)
 {
 	CApplication*	pApp = (CApplication*)pParam;

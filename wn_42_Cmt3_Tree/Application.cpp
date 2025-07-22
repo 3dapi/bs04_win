@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -24,94 +24,94 @@ static CApplication*	g_pD3DApp;
 #define IDC_DEL			(WM_USER+4)
 #define IDC_EDIT		(WM_USER+5)
 
-// ¿ìÆí ¹øÈ£ ±¸Á¶Ã¼
+// ìš°í¸ ë²ˆí˜¸ êµ¬ì¡°ì²´
 std::vector< std::tuple<int, std::string, std::string, int> > arPost
 {
-	std::make_tuple(-1,"¿ìÆí¹øÈ£ºÎ","000-000",0),
-	std::make_tuple(0,"¼­¿ïÆ¯º°½Ã","000-000",1),
-	std::make_tuple(0,"°æ±âµµ","000-000",1),
-	std::make_tuple(0,"°­¿øµµ","000-000",1),
-	std::make_tuple(0,"ÃæÃ»³²µµ","000-000",1),
-	std::make_tuple(0,"ÃæÃ»ºÏµµ","000-000",1),
-	std::make_tuple(1,"°­³²±¸","000-000",2),
-	std::make_tuple(1,"°­µ¿±¸","000-000",2),
-	std::make_tuple(1,"°­ºÏ±¸","000-000",2),
-	std::make_tuple(1,"°­¼­±¸","000-000",2),
-	std::make_tuple(1,"°ü¾Ç±¸","000-000",2),
-	std::make_tuple(1,"±¤Áø±¸","000-000",2),
-	std::make_tuple(1,"±¸·Î±¸","000-000",2),
-	std::make_tuple(1,"±İÃµ±¸","000-000",2),
-	std::make_tuple(1,"³ë¿ø±¸","000-000",2),
-	std::make_tuple(1,"µµºÀ±¸","000-000",2),
-	std::make_tuple(1,"µ¿´ë¹®±¸","000-000",2),
-	std::make_tuple(1,"µ¿ÀÛ±¸","000-000",2),
-	std::make_tuple(2,"°í¾ç½Ã","000-000",2),
-	std::make_tuple(2,"ÀÏ»ê½Ã","000-000",2),
-	std::make_tuple(2,"°úÃµ½Ã","000-000",2),
-	std::make_tuple(2,"±¤¸í½Ã","000-000",2),
-	std::make_tuple(2,"±¸¸®½Ã","000-000",2),
-	std::make_tuple(2,"±ºÆ÷½Ã","000-000",2),
-	std::make_tuple(2,"³²¾çÁÖ½Ã","000-000",2),
-	std::make_tuple(2,"µ¿µÎÃµ½Ã","000-000",2),
-	std::make_tuple(2,"ºÎÃµ½Ã","000-000",2),
-	std::make_tuple(3,"°­¸ª½Ã","000-000",2),
-	std::make_tuple(3,"»ïÃ´½Ã","000-000",2),
-	std::make_tuple(6,"°³Æ÷µ¿","135-240",3),
-	std::make_tuple(6,"³íÇöµ¿","135-010",3),
-	std::make_tuple(6,"´ëÄ¡µ¿","135-280",3),
-	std::make_tuple(6,"µµ°îµ¿","135-270",3),
-	std::make_tuple(6,"»ï¼ºµ¿","135-090",3),
-	std::make_tuple(6,"¼¼°îµ¿","135-190",3),
-	std::make_tuple(6,"¼ö¼­µ¿","135-220",3),
-	std::make_tuple(6,"½Å»çµ¿","135-120",3),
-	std::make_tuple(6,"¾Ğ±¸Á¤µ¿","135-110",3),
-	std::make_tuple(6,"¿ª»ïµ¿","135-080",3),
-	std::make_tuple(6,"À²Çöµ¿","135-210",3),
-	std::make_tuple(7,"°í´öµ¿","134-080",3),
-	std::make_tuple(8,"¹Ì¾Æµ¿","142-100",3),
-	std::make_tuple(9,"°¡¾çµ¿","157-200",3),
-	std::make_tuple(10,"³²Çöµ¿","151-080",3),
-	std::make_tuple(10,"ºÀÃµµ¿","151-050",3),
-	std::make_tuple(10,"½Å¸²µ¿","151-010",3),
-	std::make_tuple(11,"±¤Àåµ¿","143-210",3),
-	std::make_tuple(12,"°¡¸®ºÀµ¿","152-020",3),
-	std::make_tuple(13,"°¡»êµ¿","153-023",3),
-	std::make_tuple(14,"°ø¸ªµ¿","139-240",3),
-	std::make_tuple(15,"µµºÀµ¿","132-010",3),
-	std::make_tuple(16,"´ä½Ê¸®µ¿","130-030",3),
-	std::make_tuple(17,"³ë·®Áøµ¿","156-050",3),
-	std::make_tuple(18,"°­¸Åµ¿","412-290",3),
-	std::make_tuple(18,"°í¾çµ¿","412-500",3),
-	std::make_tuple(18,"°ü»êµ¿","412-470",3),
-	std::make_tuple(18,"³»°îµ¿","412-260",3),
-	std::make_tuple(18,"³»À¯µ¿","412-520",3),
-	std::make_tuple(18,"´ëÀÚµ¿","412-480",3),
-	std::make_tuple(18,"´ëÀåµ¿","412-250",3),
-	std::make_tuple(18,"´öÀºµ¿","412-170",3),
-	std::make_tuple(18,"µµ³»µ¿","412-060",3),
-	std::make_tuple(18,"µ¿»êµ¿","412-090",3),
-	std::make_tuple(19,"°¡ÁÂµ¿","411-440",3),
-	std::make_tuple(19,"±¸»êµ¿","411-430",3),
-	std::make_tuple(20,"°¥Çöµ¿","427-100",3),
-	std::make_tuple(20,"°úÃµµ¿","427-060",3),
-	std::make_tuple(20,"°ü¹®µ¿","427-020",3),
-	std::make_tuple(20,"¸·°èµ¿","427-080",3),
-	std::make_tuple(20,"¹®¿øµ¿","427-090",3),
-	std::make_tuple(20,"º°¾çµ¿","427-040",3),
-	std::make_tuple(21,"°¡ÇĞµ¿","423-070",3),
-	std::make_tuple(22,"°¥¸Åµ¿","471-080",3),
-	std::make_tuple(23,"±¤Á¤µ¿","435-045",3),
-	std::make_tuple(24,"°¡¿îµ¿","472-060",3),
-	std::make_tuple(25,"°É»êµ¿","483-070",3),
-	std::make_tuple(26,"°è¼öµ¿","422-070",3),
+	std::make_tuple(-1,"ìš°í¸ë²ˆí˜¸ë¶€","000-000",0),
+	std::make_tuple(0,"ì„œìš¸íŠ¹ë³„ì‹œ","000-000",1),
+	std::make_tuple(0,"ê²½ê¸°ë„","000-000",1),
+	std::make_tuple(0,"ê°•ì›ë„","000-000",1),
+	std::make_tuple(0,"ì¶©ì²­ë‚¨ë„","000-000",1),
+	std::make_tuple(0,"ì¶©ì²­ë¶ë„","000-000",1),
+	std::make_tuple(1,"ê°•ë‚¨êµ¬","000-000",2),
+	std::make_tuple(1,"ê°•ë™êµ¬","000-000",2),
+	std::make_tuple(1,"ê°•ë¶êµ¬","000-000",2),
+	std::make_tuple(1,"ê°•ì„œêµ¬","000-000",2),
+	std::make_tuple(1,"ê´€ì•…êµ¬","000-000",2),
+	std::make_tuple(1,"ê´‘ì§„êµ¬","000-000",2),
+	std::make_tuple(1,"êµ¬ë¡œêµ¬","000-000",2),
+	std::make_tuple(1,"ê¸ˆì²œêµ¬","000-000",2),
+	std::make_tuple(1,"ë…¸ì›êµ¬","000-000",2),
+	std::make_tuple(1,"ë„ë´‰êµ¬","000-000",2),
+	std::make_tuple(1,"ë™ëŒ€ë¬¸êµ¬","000-000",2),
+	std::make_tuple(1,"ë™ì‘êµ¬","000-000",2),
+	std::make_tuple(2,"ê³ ì–‘ì‹œ","000-000",2),
+	std::make_tuple(2,"ì¼ì‚°ì‹œ","000-000",2),
+	std::make_tuple(2,"ê³¼ì²œì‹œ","000-000",2),
+	std::make_tuple(2,"ê´‘ëª…ì‹œ","000-000",2),
+	std::make_tuple(2,"êµ¬ë¦¬ì‹œ","000-000",2),
+	std::make_tuple(2,"êµ°í¬ì‹œ","000-000",2),
+	std::make_tuple(2,"ë‚¨ì–‘ì£¼ì‹œ","000-000",2),
+	std::make_tuple(2,"ë™ë‘ì²œì‹œ","000-000",2),
+	std::make_tuple(2,"ë¶€ì²œì‹œ","000-000",2),
+	std::make_tuple(3,"ê°•ë¦‰ì‹œ","000-000",2),
+	std::make_tuple(3,"ì‚¼ì²™ì‹œ","000-000",2),
+	std::make_tuple(6,"ê°œí¬ë™","135-240",3),
+	std::make_tuple(6,"ë…¼í˜„ë™","135-010",3),
+	std::make_tuple(6,"ëŒ€ì¹˜ë™","135-280",3),
+	std::make_tuple(6,"ë„ê³¡ë™","135-270",3),
+	std::make_tuple(6,"ì‚¼ì„±ë™","135-090",3),
+	std::make_tuple(6,"ì„¸ê³¡ë™","135-190",3),
+	std::make_tuple(6,"ìˆ˜ì„œë™","135-220",3),
+	std::make_tuple(6,"ì‹ ì‚¬ë™","135-120",3),
+	std::make_tuple(6,"ì••êµ¬ì •ë™","135-110",3),
+	std::make_tuple(6,"ì—­ì‚¼ë™","135-080",3),
+	std::make_tuple(6,"ìœ¨í˜„ë™","135-210",3),
+	std::make_tuple(7,"ê³ ë•ë™","134-080",3),
+	std::make_tuple(8,"ë¯¸ì•„ë™","142-100",3),
+	std::make_tuple(9,"ê°€ì–‘ë™","157-200",3),
+	std::make_tuple(10,"ë‚¨í˜„ë™","151-080",3),
+	std::make_tuple(10,"ë´‰ì²œë™","151-050",3),
+	std::make_tuple(10,"ì‹ ë¦¼ë™","151-010",3),
+	std::make_tuple(11,"ê´‘ì¥ë™","143-210",3),
+	std::make_tuple(12,"ê°€ë¦¬ë´‰ë™","152-020",3),
+	std::make_tuple(13,"ê°€ì‚°ë™","153-023",3),
+	std::make_tuple(14,"ê³µë¦‰ë™","139-240",3),
+	std::make_tuple(15,"ë„ë´‰ë™","132-010",3),
+	std::make_tuple(16,"ë‹µì‹­ë¦¬ë™","130-030",3),
+	std::make_tuple(17,"ë…¸ëŸ‰ì§„ë™","156-050",3),
+	std::make_tuple(18,"ê°•ë§¤ë™","412-290",3),
+	std::make_tuple(18,"ê³ ì–‘ë™","412-500",3),
+	std::make_tuple(18,"ê´€ì‚°ë™","412-470",3),
+	std::make_tuple(18,"ë‚´ê³¡ë™","412-260",3),
+	std::make_tuple(18,"ë‚´ìœ ë™","412-520",3),
+	std::make_tuple(18,"ëŒ€ìë™","412-480",3),
+	std::make_tuple(18,"ëŒ€ì¥ë™","412-250",3),
+	std::make_tuple(18,"ë•ì€ë™","412-170",3),
+	std::make_tuple(18,"ë„ë‚´ë™","412-060",3),
+	std::make_tuple(18,"ë™ì‚°ë™","412-090",3),
+	std::make_tuple(19,"ê°€ì¢Œë™","411-440",3),
+	std::make_tuple(19,"êµ¬ì‚°ë™","411-430",3),
+	std::make_tuple(20,"ê°ˆí˜„ë™","427-100",3),
+	std::make_tuple(20,"ê³¼ì²œë™","427-060",3),
+	std::make_tuple(20,"ê´€ë¬¸ë™","427-020",3),
+	std::make_tuple(20,"ë§‰ê³„ë™","427-080",3),
+	std::make_tuple(20,"ë¬¸ì›ë™","427-090",3),
+	std::make_tuple(20,"ë³„ì–‘ë™","427-040",3),
+	std::make_tuple(21,"ê°€í•™ë™","423-070",3),
+	std::make_tuple(22,"ê°ˆë§¤ë™","471-080",3),
+	std::make_tuple(23,"ê´‘ì •ë™","435-045",3),
+	std::make_tuple(24,"ê°€ìš´ë™","472-060",3),
+	std::make_tuple(25,"ê±¸ì‚°ë™","483-070",3),
+	std::make_tuple(26,"ê³„ìˆ˜ë™","422-070",3),
 };
 
 
 
-// Parent ³ëµåÀÇ Â÷ÀÏµå¸¦ ¸ğµÎ Ã£¾Æ Æ®¸®¿¡ Ãß°¡ÇÑ´Ù. °¢ Â÷ÀÏµå¿¡ ´ëÇØ¼­µµ ÀÌ
-// ÇÔ¼ö¸¦ Àç±ÍÀûÀ¸·Î È£ÃâÇÔÀ¸·Î½á ¸ğµç Æ®¸®¸¦ ´Ù ÀÔ·ÂÇÑ´Ù.
-// pNode:ºÎ¸ğÀÇ ³ëµå
-// pid:ºÎ¸ğÀÇ ÀÎµ¦½º ¹øÈ£
+// Parent ë…¸ë“œì˜ ì°¨ì¼ë“œë¥¼ ëª¨ë‘ ì°¾ì•„ íŠ¸ë¦¬ì— ì¶”ê°€í•œë‹¤. ê° ì°¨ì¼ë“œì— ëŒ€í•´ì„œë„ ì´
+// í•¨ìˆ˜ë¥¼ ì¬ê·€ì ìœ¼ë¡œ í˜¸ì¶œí•¨ìœ¼ë¡œì¨ ëª¨ë“  íŠ¸ë¦¬ë¥¼ ë‹¤ ì…ë ¥í•œë‹¤.
+// pNode:ë¶€ëª¨ì˜ ë…¸ë“œ
+// pid:ë¶€ëª¨ì˜ ì¸ë±ìŠ¤ ë²ˆí˜¸
 void CApplication::InsertChild(HTREEITEM pNode,int pid)
 {
 	TVINSERTSTRUCT TI;
@@ -133,10 +133,10 @@ void CApplication::InsertChild(HTREEITEM pNode,int pid)
 			memset(pParam, 0, 32);
 
 			strcpy(pParam, std::get<2>(*post).c_str());
-			// ÆÄ¶ó¹ÌÅÍ¿¡ ±¸Á¶Ã¼ÀÇ Æ÷ÀÎÅÍ¸¦ ÀúÀåÇÑ´Ù.
+			// íŒŒë¼ë¯¸í„°ì— êµ¬ì¡°ì²´ì˜ í¬ì¸í„°ë¥¼ ì €ì¥í•œë‹¤.
 			TI.item.lParam=(LPARAM)pParam;
 			Node=TreeView_InsertItem(m_hTree, &TI);
-			// Â÷ÀÏµåÀÇ Â÷ÀÏµå¸¦ Ã¤¿ö ³Ö´Â´Ù.
+			// ì°¨ì¼ë“œì˜ ì°¨ì¼ë“œë¥¼ ì±„ì›Œ ë„£ëŠ”ë‹¤.
 			InsertChild(Node,i++);
 		}
 	}
@@ -144,7 +144,7 @@ void CApplication::InsertChild(HTREEITEM pNode,int pid)
 
 
 
-// ÀÔ·ÂµÈ Á¤º¸´ë·Î Ç×¸ñÀ» Ãß°¡ÇÑ´Ù.
+// ì…ë ¥ëœ ì •ë³´ëŒ€ë¡œ í•­ëª©ì„ ì¶”ê°€í•œë‹¤.
 void CApplication::AddPost()
 {
 	HTREEITEM hNow;
@@ -157,28 +157,28 @@ void CApplication::AddPost()
 
 	if (hNow==NULL)
 	{
-		MessageBox(m_hWnd,"Ãß°¡ÇÒ ºÎ¸ğ ³ëµå¸¦ ¸ÕÀú ¼±ÅÃÇØ ÁÖ½Ê½Ã¿ä.","¾Ë¸²",MB_OK);
+		MessageBox(m_hWnd,"ì¶”ê°€í•  ë¶€ëª¨ ë…¸ë“œë¥¼ ë¨¼ì € ì„ íƒí•´ ì£¼ì‹­ì‹œìš”.","ì•Œë¦¼",MB_OK);
 	}
 	else
 	{
-		// ºÎ¸ğ ³ëµåÀÇ ÀÌ¹ÌÁö ¹øÈ£¸¦ ±¸ÇØ Ç×¸ñ Ãß°¡°¡ °¡´ÉÇÑÁö Á¶»çÇÑ´Ù.
+		// ë¶€ëª¨ ë…¸ë“œì˜ ì´ë¯¸ì§€ ë²ˆí˜¸ë¥¼ êµ¬í•´ í•­ëª© ì¶”ê°€ê°€ ê°€ëŠ¥í•œì§€ ì¡°ì‚¬í•œë‹¤.
 		TvEx.mask=TVIF_IMAGE;
 		TvEx.hItem=hNow;
 		TreeView_GetItem(m_hTree,&TvEx);
 
 		if (TvEx.iImage == 3)
 		{
-			MessageBox(m_hWnd,"µ¿ ¾Æ·¡¿¡´Â Ç×¸ñÀ» Ãß°¡ÇÒ ¼ö ¾ø½À´Ï´Ù.","¾Ë¸²",MB_OK);
+			MessageBox(m_hWnd,"ë™ ì•„ë˜ì—ëŠ” í•­ëª©ì„ ì¶”ê°€í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.","ì•Œë¦¼",MB_OK);
 			return;
 		}
 
-		// ¿¡µğÆ®¿¡ ÀÔ·ÂµÈ ÀÌ¸§,¿ìÆí¹øÈ£¸¦ ÀĞ¾î¿Â´Ù.
+		// ì—ë””íŠ¸ì— ì…ë ¥ëœ ì´ë¦„,ìš°í¸ë²ˆí˜¸ë¥¼ ì½ì–´ì˜¨ë‹¤.
 		pParam=(char*)malloc(32);
 		memset(pParam, 0, 32);
 		GetDlgItemText(m_hWnd,IDC_NAME,Title,30);
 		GetDlgItemText(m_hWnd,IDC_POST,pParam,32);
 
-		// Ç×¸ñÀ» »ğÀÔÇÑ´Ù.
+		// í•­ëª©ì„ ì‚½ì…í•œë‹¤.
 		TI.hParent=hNow;
 		TI.hInsertAfter=TVI_LAST;
 		TI.item.mask=TVIF_TEXT | TVIF_IMAGE | TVIF_SELECTEDIMAGE | TVIF_PARAM;
@@ -188,12 +188,12 @@ void CApplication::AddPost()
 		TI.item.lParam=(LPARAM)pParam;
 		TreeView_InsertItem(m_hTree, &TI);
 
-		// Ç×¸ñÀ» Ãß°¡ÇÑ ÈÄ ºÎ¸ğ ³ëµå¸¦ È®ÀåÇÏ¿© Ãß°¡ÇÑ °á°ú¸¦ º¸¿©ÁØ´Ù.
+		// í•­ëª©ì„ ì¶”ê°€í•œ í›„ ë¶€ëª¨ ë…¸ë“œë¥¼ í™•ì¥í•˜ì—¬ ì¶”ê°€í•œ ê²°ê³¼ë¥¼ ë³´ì—¬ì¤€ë‹¤.
 		TreeView_Expand(m_hTree,hNow,TVE_EXPAND);
 	}
 }
 
-// ÇöÀç ¼±ÅÃµÈ Ç×¸ñÀ» »èÁ¦ÇÑ´Ù.
+// í˜„ì¬ ì„ íƒëœ í•­ëª©ì„ ì‚­ì œí•œë‹¤.
 void CApplication::DelPost()
 {
 	HTREEITEM hNow;
@@ -206,7 +206,7 @@ void CApplication::DelPost()
 	}
 }
 
-// ÇöÀç ¼±ÅÃµÈ Ç×¸ñÀ» ¼öÁ¤ÇÑ´Ù.
+// í˜„ì¬ ì„ íƒëœ í•­ëª©ì„ ìˆ˜ì •í•œë‹¤.
 void CApplication::EditPost()
 {
 	HTREEITEM	hNow;
@@ -218,7 +218,7 @@ void CApplication::EditPost()
 
 	if (hNow==NULL)
 	{
-		MessageBox(m_hWnd,"¼öÁ¤ÇÒ ³ëµå¸¦ ¸ÕÀú ¼±ÅÃÇØ ÁÖ½Ê½Ã¿ä.","¾Ë¸²",MB_OK);
+		MessageBox(m_hWnd,"ìˆ˜ì •í•  ë…¸ë“œë¥¼ ë¨¼ì € ì„ íƒí•´ ì£¼ì‹­ì‹œìš”.","ì•Œë¦¼",MB_OK);
 	}
 	else
 	{
@@ -249,7 +249,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 
@@ -304,23 +304,23 @@ INT CApplication::Create( HINSTANCE hInst)
 	InitCommonControls();
 
 
-		// Æ®¸® ºä ÄÁÆ®·ÑÀ» ¸¸µç´Ù.
+		// íŠ¸ë¦¬ ë·° ì»¨íŠ¸ë¡¤ì„ ë§Œë“ ë‹¤.
 		m_hTree=CreateWindow(WC_TREEVIEW, ""
 			, WS_CHILD | WS_VISIBLE | WS_BORDER | TVS_HASBUTTONS | TVS_LINESATROOT | TVS_HASLINES | TVS_SHOWSELALWAYS
 			, 10,10,200,300
 			, m_hWnd , NULL
 			,m_hInst, NULL);
 
-		// Æ®¸®ºä¿¡ »ç¿ëÇÒ ÀÌ¹ÌÁö ¸®½ºÆ®¸¦ ¸¸µé¾î Æ®¸®ºä¿¡ ¿¬°áÇÑ´Ù.
+		// íŠ¸ë¦¬ë·°ì— ì‚¬ìš©í•  ì´ë¯¸ì§€ ë¦¬ìŠ¤íŠ¸ë¥¼ ë§Œë“¤ì–´ íŠ¸ë¦¬ë·°ì— ì—°ê²°í•œë‹¤.
 		m_Image=ImageList_LoadBitmap(m_hInst, MAKEINTRESOURCE(IDB_BITMAP1), 16, 1, RGB(255,255,255));
 
 		TreeView_SetImageList(m_hTree, m_Image, TVSIL_NORMAL);
 
-		// Æ®¸®¿¡ µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÑ´Ù.
+		// íŠ¸ë¦¬ì— ë°ì´í„°ë¥¼ ì…ë ¥í•œë‹¤.
 		InsertChild((HTREEITEM)0,-1);
 
-		// Á¤º¸¸¦ ÀÔ·Â¹Ş±â À§ÇÑ ÄÁÆ®·ÑµéÀ» ¸¸µç´Ù.
-		CreateWindow("static","ÀÌ¸§"
+		// ì •ë³´ë¥¼ ì…ë ¥ë°›ê¸° ìœ„í•œ ì»¨íŠ¸ë¡¤ë“¤ì„ ë§Œë“ ë‹¤.
+		CreateWindow("static","ì´ë¦„"
 			, WS_CHILD | WS_VISIBLE
 			, 220,70,80,25
 			, m_hWnd,(HMENU)-1
@@ -332,7 +332,7 @@ INT CApplication::Create( HINSTANCE hInst)
 			, m_hWnd, (HMENU)IDC_NAME
 			, m_hInst,NULL);
 
-		CreateWindow("static","¿ìÆí¹øÈ£"
+		CreateWindow("static","ìš°í¸ë²ˆí˜¸"
 			, WS_CHILD | WS_VISIBLE
 			, 220,100,80,25
 			, m_hWnd, (HMENU)-1
@@ -344,20 +344,20 @@ INT CApplication::Create( HINSTANCE hInst)
 			, m_hWnd, (HMENU)IDC_POST
 			, m_hInst, NULL);
 
-		// ¸í·É ¹öÆ°
-		CreateWindow("button","Ãß°¡"
+		// ëª…ë ¹ ë²„íŠ¼
+		CreateWindow("button","ì¶”ê°€"
 			, WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON
 			, 220,150,90,25
 			, m_hWnd, (HMENU)IDC_ADD
 			, m_hInst,NULL);
 
-		CreateWindow("button","»èÁ¦"
+		CreateWindow("button","ì‚­ì œ"
 			, WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON
 			, 320,150,90,25
 			, m_hWnd, (HMENU)IDC_DEL
 			, m_hInst,NULL);
 
-		CreateWindow("button","¼öÁ¤"
+		CreateWindow("button","ìˆ˜ì •"
 			, WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON
 			, 420,150,90,25
 			, m_hWnd, (HMENU)IDC_EDIT
@@ -367,7 +367,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 	return S_OK;
 }
@@ -449,7 +449,7 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 				switch (hdr->code)
 				{
 
-					// ¼±ÅÃµÈ Ç×¸ñÀ» º¸¿©ÁØ´Ù.
+					// ì„ íƒëœ í•­ëª©ì„ ë³´ì—¬ì¤€ë‹¤.
 					case TVN_SELCHANGED:
 						TvEx.mask=TVIF_PARAM | TVIF_TEXT;
 						TvEx.hItem=ntv->itemNew.hItem;

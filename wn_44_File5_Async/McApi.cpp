@@ -1,4 +1,4 @@
-#include <windows.h>
+ï»¿#include <windows.h>
 #include <stdio.h>
 
 
@@ -9,17 +9,17 @@ HANDLE		g_hFile;
 DWORD		g_dBuf;
 
 
-//¿Ï·á°¡ ³¡³¯ ¶§±îÁö ÀÌ ¸Þ¸ð¸®´Â À¯È¿ÇØ¾ß ÇÏ¹Ç·Î...
-// ±ÍÂù¾Æ¼­ ±×³É Àü¿ªÀ¸·Î..
+//ì™„ë£Œê°€ ëë‚  ë•Œê¹Œì§€ ì´ ë©”ëª¨ë¦¬ëŠ” ìœ íš¨í•´ì•¼ í•˜ë¯€ë¡œ...
+// ê·€ì°¬ì•„ì„œ ê·¸ëƒ¥ ì „ì—­ìœ¼ë¡œ..
 
 OVERLAPPED	g_OL;
 
 
 void main()
 {
-	printf("ºñµ¿±â I/O\n");
+	printf("ë¹„ë™ê¸° I/O\n");
 
-	// 1. ÆÄÀÏÀ» ¸¸µç´Ù.
+	// 1. íŒŒì¼ì„ ë§Œë“ ë‹¤.
 	g_hFile=CreateFile("Test.bin",GENERIC_WRITE, 0, NULL, CREATE_ALWAYS,FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED, NULL);
 
 	if(INVALID_HANDLE_VALUE == g_hFile)
@@ -27,7 +27,7 @@ void main()
 		return;
 	}
 
-	// ÀÓ½Ã µ¥ÀÌÅÍ
+	// ìž„ì‹œ ë°ì´í„°
 	BYTE*	pBuf = (BYTE*)malloc( MAX_BUFSIZE );
 
 	memset(&g_OL, 0, sizeof g_OL);
@@ -49,8 +49,8 @@ void main()
 		{
 			printf("IO Error\n");
 
-			//	ÇÑ¹ø¿¡ ¾µ µ¥ÀÌÅÍ°¡ ³Ê¹« Å©¸é
-			//	ERROR_NO_SYSTEM_RESOURCES ¸Þ½ÃÁö¸¦ ¹Þ´Â´Ù.
+			//	í•œë²ˆì— ì“¸ ë°ì´í„°ê°€ ë„ˆë¬´ í¬ë©´
+			//	ERROR_NO_SYSTEM_RESOURCES ë©”ì‹œì§€ë¥¼ ë°›ëŠ”ë‹¤.
 			return;
 		}
 	}
@@ -64,9 +64,9 @@ void main()
 		{
 			DWORD hr = GetLastError();
 
-			// GetOverlappedResult(g_hFile, &g_OL, &g_dBuf, FALSE);¿¡¼­ ¸¶Áö¸·¿¡
-			// FALSEÀÌ¸é
-			// ERROR_IO_INCOMPLETE ¸Þ½ÃÁö¸¦ ¹Þ´Â´Ù. <-- ²À MSDNÀ» È®ÀÎÇØº¼ °Í.
+			// GetOverlappedResult(g_hFile, &g_OL, &g_dBuf, FALSE);ì—ì„œ ë§ˆì§€ë§‰ì—
+			// FALSEì´ë©´
+			// ERROR_IO_INCOMPLETE ë©”ì‹œì§€ë¥¼ ë°›ëŠ”ë‹¤. <-- ê¼­ MSDNì„ í™•ì¸í•´ë³¼ ê²ƒ.
 
 			if( ERROR_IO_PENDING !=hr && ERROR_IO_INCOMPLETE != hr)
 			{

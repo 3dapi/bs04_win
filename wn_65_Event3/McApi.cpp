@@ -1,4 +1,4 @@
-// Event Test
+ï»¿// Event Test
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -18,8 +18,8 @@ void main()
 	// Event Create
 	m_Evnt[0] = CreateEvent(
 			NULL
-		,	FALSE	// ÀÌ ºÎºĞÀÌ TRUE¸é WaitForSingleObject ÈÄ¿¡µµ °è¼Ó Signaled°¡ µ·´Ù. ¼öµ¿À¸·Î ResetEvent¸¦ È£ÃâÇØ¾ß ÇÑ´Ù.
-		,	FALSE	// Ã³À½ ½ÃÀÛÀ» Signaled·Î ÇÒ°ÍÀÎ°¡ °áÁ¤ÇÑ´Ù.
+		,	FALSE	// ì´ ë¶€ë¶„ì´ TRUEë©´ WaitForSingleObject í›„ì—ë„ ê³„ì† Signaledê°€ ëˆë‹¤. ìˆ˜ë™ìœ¼ë¡œ ResetEventë¥¼ í˜¸ì¶œí•´ì•¼ í•œë‹¤.
+		,	FALSE	// ì²˜ìŒ ì‹œì‘ì„ Signaledë¡œ í• ê²ƒì¸ê°€ ê²°ì •í•œë‹¤.
 		,	NULL
 		);
 
@@ -49,7 +49,7 @@ void main()
 
 
 
-//ÀÔ Ãâ·Â ¿Ï·á Ã³¸®
+//ì… ì¶œë ¥ ì™„ë£Œ ì²˜ë¦¬
 DWORD WINAPI WorkProc(void* pParam)
 {
 	INT	nIdx =-1;
@@ -65,7 +65,7 @@ DWORD WINAPI WorkProc(void* pParam)
 
 		INT nRnd = rand()%8;
 		printf("Random Event Index: %d    ", nRnd);
-		SetEvent(m_Evnt[nRnd]);		// ÀÓÀÇÀÇ ÀÌº¥Æ®¸¦ È°¼ºÈ­½ÃÄÑ º¸ÀÚ.
+		SetEvent(m_Evnt[nRnd]);		// ì„ì˜ì˜ ì´ë²¤íŠ¸ë¥¼ í™œì„±í™”ì‹œì¼œ ë³´ì.
 
 		Sleep(300);
 	}

@@ -1,4 +1,4 @@
-// D3D Sprite toturial
+ï»¿// D3D Sprite toturial
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -12,19 +12,19 @@ HANDLE		g_hMutex		= NULL;
 
 INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR, INT )
 {
-	g_hMutex = OpenMutex(SYNCHRONIZE, FALSE, EXC_MTX);							// µ¿ÀÏÇÑ ÇÁ·Î±×·¥ÀÌ ½ÇÇàµÇ°í ÀÖ´ÂÁö È®ÀÎ
+	g_hMutex = OpenMutex(SYNCHRONIZE, FALSE, EXC_MTX);							// ë™ì¼í•œ í”„ë¡œê·¸ë¨ì´ ì‹¤í–‰ë˜ê³  ìˆëŠ”ì§€ í™•ì¸
 
 	if(g_hMutex)
 	{
-		MessageBox(0, "Áßº¹½ÇÇà", "Error", 0);
+		MessageBox(0, "ì¤‘ë³µì‹¤í–‰", "Error", 0);
 		return -1;
 	}
 
 	g_hMutex = CreateMutex(NULL, FALSE, EXC_MTX);
 
-	if (GetLastError() == ERROR_ALREADY_EXISTS)									//¿©±â¼­µµ °É¸°´Ù.
+	if (GetLastError() == ERROR_ALREADY_EXISTS)									//ì—¬ê¸°ì„œë„ ê±¸ë¦°ë‹¤.
 	{
-		MessageBox(0, "Áßº¹½ÇÇà", "Error", 0);
+		MessageBox(0, "ì¤‘ë³µì‹¤í–‰", "Error", 0);
 		return -1;
 	}
 

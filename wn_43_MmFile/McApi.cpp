@@ -1,4 +1,4 @@
-#include <windows.h>
+ï»¿#include <windows.h>
 #include <stdio.h>
 
 #define MAX_SHARE_SIZE 256
@@ -18,7 +18,7 @@ void main()
 	char sMsgCur[MAX_SHARE_SIZE];
 	memset(sMsgCur, 0, sizeof sMsgCur);
 
-	// 1. ÆÄÀÏÀ» ¸¸µç´Ù.
+	// 1. íŒŒì¼ì„ ë§Œë“ ë‹¤.
 	g_hFile=CreateFile("Mapping.txt",GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
 	if (g_hFile == INVALID_HANDLE_VALUE)
@@ -27,14 +27,14 @@ void main()
 		g_hFile=CreateFile("Mapping.txt",GENERIC_READ | GENERIC_WRITE, 0, NULL, CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
 	}
 
-	// 2. ÆÄÀÏ ¸ÊÇÎ ¿ÀºêÁ§Æ®¸¦ ¸¸µç´Ù.
+	// 2. íŒŒì¼ ë§µí•‘ ì˜¤ë¸Œì íŠ¸ë¥¼ ë§Œë“ ë‹¤.
 	//	g_hMap=CreateFileMapping(INVALID_HANDLE_VALUE, NULL, PAGE_READWRITE, 0, MAX_SHARE_SIZE, g_sShare);
 	g_hMap=CreateFileMapping(g_hFile, NULL, PAGE_READWRITE, 0, 0, NULL);
 
-	// ´Ù¸¥ ¾²·¹µå¿¡¼­ °øÀ¯: OpenFileMapping <= CreateFileMapping
+	// ë‹¤ë¥¸ ì“°ë ˆë“œì—ì„œ ê³µìœ : OpenFileMapping <= CreateFileMapping
 
 
-	// 3. ÁÖ¼Ò °ø°£¿¡ ¸ÊÇÎÇÑ´Ù.
+	// 3. ì£¼ì†Œ ê³µê°„ì— ë§µí•‘í•œë‹¤.
 	//g_pMsg=(char*)MapViewOfFile(g_hMap, FILE_MAP_ALL_ACCESS, 0, 0, MAX_SHARE_SIZE);
 	g_pMsg=(char*)MapViewOfFile(g_hMap, FILE_MAP_ALL_ACCESS,0,0,0);
 

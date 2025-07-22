@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ο»Ώ// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -33,7 +33,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 
 	memset(m_dTh, 0, sizeof(m_dTh));
 	memset(m_hTh, 0, sizeof(m_hTh));
@@ -89,7 +89,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 
 	return S_OK;
@@ -145,7 +145,7 @@ LRESULT CApplication::MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 				{
 					MessageBox(hWnd, "Create Thread", "Msg",0);
 
-					ReleaseSemaphore(g_hSmph, 1, NULL);							// Semaphore count 1Αυ°΅
+					ReleaseSemaphore(g_hSmph, 1, NULL);							// Semaphore count 1μ¦κ°€
 
 					for(int i=0; i<3; ++i)
 					{
@@ -230,7 +230,7 @@ DWORD WINAPI ThreadFunc(void* pParam)
 
 	while(nCnt<100)
 	{
-		WaitForSingleObject(g_hSmph, INFINITE);									// Semaphore count 1°¨ΌÒ
+		WaitForSingleObject(g_hSmph, INFINITE);									// Semaphore count 1κ°μ†
 		Sleep(500);
 
 		++nCnt;
@@ -240,7 +240,7 @@ DWORD WINAPI ThreadFunc(void* pParam)
 		sprintf(sBuf, "%d", pApp->m_nValue);
 		SetWindowText(pApp->m_hWnd, sBuf);
 
-		ReleaseSemaphore(g_hSmph, 1, NULL);										// Semaphore count 1Αυ°΅
+		ReleaseSemaphore(g_hSmph, 1, NULL);										// Semaphore count 1μ¦κ°€
 	}
 
 

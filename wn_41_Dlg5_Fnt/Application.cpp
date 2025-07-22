@@ -1,4 +1,4 @@
-// Implementation of the CApplication class.
+ï»¿// Implementation of the CApplication class.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -27,7 +27,7 @@ CApplication::CApplication()
 	m_dScnX		= 1024;
 	m_dScnY		= 768;
 
-	m_bShowCusor= true;
+	m_bShowCursor= true;
 }
 
 
@@ -78,7 +78,7 @@ INT CApplication::Create( HINSTANCE hInst)
 
 	ShowWindow( m_hWnd, SW_SHOW );
 	UpdateWindow( m_hWnd );
-	::ShowCursor(m_bShowCusor);
+	::ShowCursor(m_bShowCursor);
 
 
 	return S_OK;
@@ -199,7 +199,7 @@ void CApplication::FileOpen()
 	OFN.lpstrFilter	="Text Files(*.txt)\0*.txt\0All Files(*.*)\0*.*\0";
 	OFN.lpstrFile	=lpstrFile;
 	OFN.nMaxFile	=MAX_PATH;
-	OFN.lpstrTitle	="ÆÄÀÏÀ» ¼±ÅÃÇØ ÁÖ½Ê½Ã¿ä";
+	OFN.lpstrTitle	="íŒŒì¼ì„ ì„ íƒí•´ ì£¼ì‹­ì‹œìš”";
 
 	OFN.nMaxFile=10000;
 	OFN.Flags=OFN_EXPLORER | OFN_ALLOWMULTISELECT;
@@ -219,11 +219,11 @@ void CApplication::FileOpen()
 		strcpy(Name, p);
 
 		if (*(p+strlen(Name)+1)==0)
-			wsprintf(str,"%s ÆÄÀÏ ÇÏ³ª¸¸ ¼±ÅÃÇß½À´Ï´Ù",Name);
+			wsprintf(str,"%s íŒŒì¼ í•˜ë‚˜ë§Œ ì„ íƒí–ˆìŠµë‹ˆë‹¤",Name);
 
 		else
 		{
-			wsprintf(str,"%s µğ·ºÅä¸®¿¡ ÀÖ´Â ´ÙÀ½ ÆÄÀÏµéÀÌ ¼±ÅÃµÇ¾ú½À´Ï´Ù"
+			wsprintf(str,"%s ë””ë ‰í† ë¦¬ì— ìˆëŠ” ë‹¤ìŒ íŒŒì¼ë“¤ì´ ì„ íƒë˜ì—ˆìŠµë‹ˆë‹¤"
 				"\r\n\r\n", Name);
 
 			while(1)
@@ -232,16 +232,16 @@ void CApplication::FileOpen()
 				if (*p==0)
 					break;
 				strcpy(Name,p);
-				wsprintf(szTmp,"%d¹øÂ° ÆÄÀÏ = %s \r\n",i++,Name);
+				wsprintf(szTmp,"%dë²ˆì§¸ íŒŒì¼ = %s \r\n",i++,Name);
 				strcat(str,szTmp);
 			}
 		}
 
-		MessageBox(m_hWnd,str,"¼±ÅÃÇÑ ÆÄÀÏ", 0);
+		MessageBox(m_hWnd,str,"ì„ íƒí•œ íŒŒì¼", 0);
 	}
 
 	else if (CommDlgExtendedError()==FNERR_BUFFERTOOSMALL)
-			MessageBox(m_hWnd,"¹öÆÛ Å©±â°¡ ³Ê¹« ÀÛ½À´Ï´Ù","¿¡·¯", 0);
+			MessageBox(m_hWnd,"ë²„í¼ í¬ê¸°ê°€ ë„ˆë¬´ ì‘ìŠµë‹ˆë‹¤","ì—ëŸ¬", 0);
 
 
 	SetCurrentDirectory(sDir);
@@ -283,7 +283,7 @@ void CApplication::SetFont()
 {
 	LOGFONT lf;
 	COLORREF Color;
-	char str[]="ÆùÆ® ´ëÈ­»óÀÚ Test 1234";
+	char str[]="í°íŠ¸ ëŒ€í™”ìƒì Test 1234";
 
 	CHOOSEFONT CFT;
 	HFONT MyFont, OldFont;
